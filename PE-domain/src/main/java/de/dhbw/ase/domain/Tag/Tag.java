@@ -10,11 +10,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tag")
-@AllArgsConstructor
 @Getter
 @NoArgsConstructor
 public class Tag {
     @Id
     private String name;
+
+    public Tag(String name){
+        this.name = name.toLowerCase();
+    }
 
 }
