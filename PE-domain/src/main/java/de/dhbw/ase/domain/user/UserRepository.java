@@ -10,6 +10,6 @@ public interface UserRepository {
 
     Optional<User> findUserById(UUID id);
 
-    List<User> findUserByName(String name);
+    Optional<User> findUserByName(String name);
     User save(User user);
 }
