@@ -1,0 +1,20 @@
+package de.dhbw.ase.domain.Tag;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tag")
+@AllArgsConstructor
+@Getter
+@NoArgsConstructor
+public class Tag {
+    @Id
+    private String name;
+
+}
