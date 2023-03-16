@@ -1,12 +1,8 @@
 package de.dhbw.ase.adapter.group;
 
 import de.dhbw.ase.domain.group.Group;
-import de.dhbw.ase.domain.todo.Todo;
-import de.dhbw.ase.domain.user.User;
-import lombok.Getter;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.function.Function;
 
 
