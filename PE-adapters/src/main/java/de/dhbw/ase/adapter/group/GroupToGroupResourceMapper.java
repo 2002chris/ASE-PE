@@ -4,11 +4,13 @@ import de.dhbw.ase.domain.group.Group;
 import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.user.User;
 import lombok.Getter;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.function.Function;
 
 
+@Component
 public class GroupToGroupResourceMapper implements Function<Group, GroupResource> {
 
     @Override
