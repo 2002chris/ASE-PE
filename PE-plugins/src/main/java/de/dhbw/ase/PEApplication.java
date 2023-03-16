@@ -9,8 +9,8 @@ import java.util.TimeZone;
 public class PEApplication {
 
     public static void main(String[] args) {
-        System.setProperty("user.timezone", "UTC");
-        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+        System.setProperty("user.timezone", "Europe/Berlin");
+        TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"));
         SpringApplication.run(PEApplication.class, args);
     }
 }
