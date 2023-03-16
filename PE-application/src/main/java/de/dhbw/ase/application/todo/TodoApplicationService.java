@@ -9,19 +9,19 @@ import java.util.List;
 
 @Service
 public class TodoApplicationService implements TodoApplication{
-    private final TodoRepository todoRepository;
+    private final TodoApplication todoApplication;
 
     @Autowired
-    public TodoApplicationService(TodoRepository todoRepository) {
-        this.todoRepository = todoRepository;
+    public TodoApplicationService(TodoApplication todoApplication) {
+        this.todoApplication = todoApplication;
     }
 
     public List<Todo> findAllTodos() {
-        return this.todoRepository.findAllTodos();
+        return this.todoApplication.findAllTodos();
     }
 
     @Override
     public Todo save(Todo todo) {
-        return this.todoRepository.save(todo);
+        return this.todoApplication.save(todo);
     }
 }
