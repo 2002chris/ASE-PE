@@ -1,5 +1,6 @@
 package de.dhbw.ase.application.user;
 
+import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,13 @@ public class UserApplicationService implements UserApplication {
     @Override
     public User save(User user) {
         return userApplication.save(user);
+    }
+
+    @Override
+    public void addTodoToUser(Todo todo, User user){
+        List<Todo> todos = user.getTodos();
+        todos.add(todo);
+        user.setTodos(todos);
+        userApplication.save(user);
     }
 }
