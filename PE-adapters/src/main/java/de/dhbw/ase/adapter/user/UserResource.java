@@ -2,9 +2,11 @@ package de.dhbw.ase.adapter.user;
 
 import de.dhbw.ase.domain.calendar.Calendar;
 import de.dhbw.ase.domain.todo.Todo;
+import lombok.Getter;
 
 import java.util.List;
 
+@Getter
 public class UserResource {
 
     private String name;
