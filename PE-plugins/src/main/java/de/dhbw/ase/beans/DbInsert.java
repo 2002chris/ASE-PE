@@ -59,9 +59,10 @@ public class DbInsert {
         tagApplication.save(tag1);
         todoApplication.save(todo1);
         groupApplication.save(group1);
-        userApplication.save(user1);
-        calendarApplication.save(calendar1);
         reminderApplication.save(reminder1);
+        calendarApplication.save(calendar1);
+        userApplication.save(user1);
+
 
 
 
