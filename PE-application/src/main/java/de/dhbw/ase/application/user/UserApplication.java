@@ -1,5 +1,6 @@
 package de.dhbw.ase.application.user;
 
+import de.dhbw.ase.domain.calendar.Calendar;
 import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.user.User;
 
@@ -12,4 +13,5 @@ public interface UserApplication {
     User save(User user);
 
     void addTodoToUser(Todo todo, User user);
+    void addCalendarToUser(Calendar calendar, User user);
 }

@@ -1,5 +1,6 @@
 package de.dhbw.ase.application.user;
 
+import de.dhbw.ase.domain.calendar.Calendar;
 import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,14 @@ public class UserApplicationService implements UserApplication {
         List<Todo> todos = user.getTodos();
         todos.add(todo);
         user.setTodos(todos);
+        userApplication.save(user);
+    }
+
+    @Override
+    public void addCalendarToUser(Calendar calendar, User user) {
+        List<Calendar> calendars = user.getCalendars();
+        calendars.add(calendar);
+        user.setCalendars(calendars);
         userApplication.save(user);
     }
 }
