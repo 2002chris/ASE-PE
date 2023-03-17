@@ -30,6 +30,6 @@ public class TagApplicationService implements TagApplication {
 
     @Override
     public Tag save(Tag tag) {
-        return save(tag);
+        return tagRepository.save(tag);
     }
 }
