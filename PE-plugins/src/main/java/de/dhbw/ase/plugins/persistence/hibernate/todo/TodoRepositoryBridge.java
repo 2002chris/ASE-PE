@@ -23,7 +23,7 @@ public class TodoRepositoryBridge implements TodoRepository {
 
     @Override
     public Optional<Todo> findTodoById(UUID id) {
-        return springDataTodoRepository.findById(id);
+        return springDataTodoRepository.findTodoById(id);
     }
 
     @Override

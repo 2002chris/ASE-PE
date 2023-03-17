@@ -23,7 +23,7 @@ public class UserRepositoryBridge implements UserRepository {
 
     @Override
     public Optional<User> findUserById(UUID id) {
-        return springDataUserRepository.findById(id);
+        return springDataUserRepository.findUserById(id);
     }
 
     @Override
