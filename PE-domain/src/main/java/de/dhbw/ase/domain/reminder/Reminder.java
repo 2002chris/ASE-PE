@@ -3,6 +3,7 @@ package de.dhbw.ase.domain.reminder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +20,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Reminder {
     @Id
+    @Type(type="uuid-char")
     @Column(name = "id")
     private UUID id;
 

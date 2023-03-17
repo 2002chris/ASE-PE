@@ -5,6 +5,7 @@ import de.dhbw.ase.domain.todo.Todo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
@@ -29,6 +30,7 @@ public class User {
     private List<Calendar> calendars;
 
     @Id
+    @Type(type="uuid-char")
     @Column(name = "id")
     private UUID id;
 

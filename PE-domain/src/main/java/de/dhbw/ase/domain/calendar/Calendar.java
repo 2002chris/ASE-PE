@@ -5,6 +5,7 @@ import de.dhbw.ase.domain.todo.Todo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
@@ -23,6 +24,7 @@ public class Calendar {
     @OneToMany()
     private List<Reminder> reminder;
     @Id
+    @Type(type = "uuid-char")
     @Column(name = "id")
     private UUID id;
 

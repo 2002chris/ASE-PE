@@ -2,6 +2,7 @@ package de.dhbw.ase.domain.group;
 
 import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.user.User;
+import org.hibernate.annotations.Type;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,6 +19,7 @@ import java.util.UUID;
 public class Group {
 
     @Id
+    @Type(type="uuid-char")
     @Column(name = "id")
     private UUID id;
 

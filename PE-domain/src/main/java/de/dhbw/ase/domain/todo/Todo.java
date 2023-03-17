@@ -4,6 +4,7 @@ import de.dhbw.ase.domain.Tag.Tag;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -18,7 +19,8 @@ import java.util.UUID;
 @Table(name = "todo")
 public class Todo {
     @Id
-    @Column(name = "id", length = )
+    @Type(type="uuid-char") //Viktor hat geholfen und will die Credits haben <- jetzt kann er sich einmal geil fühlen
+    @Column(name = "id")
     private UUID id;
     @Column(name = "until_date")
     private LocalDate untilDate;
