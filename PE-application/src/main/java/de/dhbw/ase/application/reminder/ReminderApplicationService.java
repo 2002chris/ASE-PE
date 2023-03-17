@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ReminderApplicationService implements ReminderApplication{
@@ -24,8 +25,8 @@ public class ReminderApplicationService implements ReminderApplication{
     }
 
     @Override
-    public Optional<Reminder> findReminderById() {
-        return reminderApplication.findReminderById();
+    public Optional<Reminder> findReminderById(UUID uuid) {
+        return reminderApplication.findReminderById(uuid);
     }
 
     @Override
