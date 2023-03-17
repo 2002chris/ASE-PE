@@ -33,7 +33,6 @@ public class UserApplicationService implements UserApplication {
         List<Todo> todos = user.getTodos();
         todos.add(todo);
         user.setTodos(todos);
-        userApplication.save(user);
     }
 
     @Override
@@ -41,6 +40,5 @@ public class UserApplicationService implements UserApplication {
         List<Calendar> calendars = user.getCalendars();
         calendars.add(calendar);
         user.setCalendars(calendars);
-        userApplication.save(user);
     }
 }

@@ -48,6 +48,5 @@ public class CalendarApplicationService implements CalendarApplication{
         List<Reminder> reminders = calendar.getReminder();
         reminders.add(reminder);
         calendar.setReminder(reminders);
-        calendarApplication.save(calendar);
     }
 }
