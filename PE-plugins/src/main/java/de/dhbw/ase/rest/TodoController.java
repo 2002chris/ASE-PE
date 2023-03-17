@@ -4,11 +4,10 @@ import de.dhbw.ase.adapter.todo.TodoResource;
 import de.dhbw.ase.adapter.todo.TodoToTodoResourceMapper;
 import de.dhbw.ase.application.todo.TodoApplication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -23,9 +22,15 @@ public class TodoController {
         this.todoToTodoResourceMapper = todoToTodoResourceMapper;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public List<TodoResource> getTodos(){
         return this.todoApplication.findAllTodos().stream()
                 .map(todoToTodoResourceMapper).collect(Collectors.toList());
+    }
+
+    @GetMapping(params = {"id"})
+    public TodoResource getTodo(@RequestParam String id){
+        return this.todoApplication.findTodoById(UUID.fromString(id))
+                .stream().map(todoToTodoResourceMapper).findFirst().get();
     }
 }
