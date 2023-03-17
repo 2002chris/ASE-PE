@@ -5,6 +5,8 @@ import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.user.User;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 public interface GroupApplication {
     Group save(Group group);
@@ -13,4 +15,6 @@ public interface GroupApplication {
     List<Group> findAllGroups();
 
     void addTodoToGroup(Todo todo, Group group);
+
+    Optional<Group> findGroupById(UUID id);
 }

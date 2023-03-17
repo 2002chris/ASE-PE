@@ -33,7 +33,7 @@ public class CalendarApplicationService implements CalendarApplication{
 
     @Override
     public Calendar save(Calendar calendar) {
-        return calendarRepository.save(calendar);
+        return this.calendarRepository.save(calendar);
     }
 
     @Override

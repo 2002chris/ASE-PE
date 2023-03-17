@@ -48,6 +48,20 @@ public class DbInsert {
         Reminder reminder1 = new Reminder(LocalDate.now(), "test1", "test123");
         Tag tag1 = new Tag("test");
 
+        todoApplication.save(todo1);
+        groupApplication.save(group1);
+        userApplication.save(user1);
+        calendarApplication.save(calendar1);
+        reminderApplication.save(reminder1);
+        tagApplication.save(tag1);
+
+        todo1 = todoApplication.findTodoById(todo1.getId()).get();
+        group1 = groupApplication.findGroupById(group1.getId()).get();
+        user1 = userApplication.findUserById(user1.getId()).get();
+        calendar1 = calendarApplication.findCalendarById(calendar1.getId()).get();
+        reminder1 = reminderApplication.findReminderById(reminder1.getId()).get();
+        tag1 = tagApplication.findTagByName(tag1.getName()).get();
+
         todoApplication.addTagToTodo(tag1,todo1);
         groupApplication.addUserToGroup(user1, group1);
         groupApplication.addTodoToGroup(todo1, group1);
@@ -58,10 +72,10 @@ public class DbInsert {
 
         tagApplication.save(tag1);
         todoApplication.save(todo1);
-        groupApplication.save(group1);
         reminderApplication.save(reminder1);
         calendarApplication.save(calendar1);
         userApplication.save(user1);
+        groupApplication.save(group1);
 
 
 

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class GroupApplicationService implements GroupApplication{
@@ -34,7 +36,6 @@ public class GroupApplicationService implements GroupApplication{
         List<User> users = group.getUsers();
         users.add(user);
         group.setUsers(users);
-        this.groupRepository.save(group);
     }
 
     @Override
@@ -42,6 +43,10 @@ public class GroupApplicationService implements GroupApplication{
         List<Todo> todos = group.getTodos();
         todos.add(todo);
         group.setTodos(todos);
-        this.groupRepository.save(group);
+    }
+
+    @Override
+    public Optional<Group> findGroupById(UUID id) {
+        return groupRepository.findGroupById(id);
     }
 }

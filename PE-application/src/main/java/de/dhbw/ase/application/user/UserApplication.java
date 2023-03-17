@@ -5,6 +5,8 @@ import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.user.User;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 public interface UserApplication {
 
@@ -14,4 +16,6 @@ public interface UserApplication {
 
     void addTodoToUser(Todo todo, User user);
     void addCalendarToUser(Calendar calendar, User user);
+
+    Optional<User> findUserById(UUID id);
 }

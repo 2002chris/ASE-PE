@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class TodoApplicationService implements TodoApplication{
@@ -20,6 +22,11 @@ public class TodoApplicationService implements TodoApplication{
 
     public List<Todo> findAllTodos() {
         return this.todoRepository.findAllTodos();
+    }
+
+    @Override
+    public Optional<Todo> findTodoById(UUID id) {
+        return this.todoRepository.findTodoById(id);
     }
 
     @Override

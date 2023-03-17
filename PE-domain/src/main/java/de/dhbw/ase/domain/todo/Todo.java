@@ -18,7 +18,7 @@ import java.util.UUID;
 @Table(name = "todo")
 public class Todo {
     @Id
-    @Column(name = "id")
+    @Column(name = "id", length = )
     private UUID id;
     @Column(name = "until_date")
     private LocalDate untilDate;

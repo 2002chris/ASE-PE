@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserApplicationService implements UserApplication {
@@ -41,5 +43,10 @@ public class UserApplicationService implements UserApplication {
         List<Calendar> calendars = user.getCalendars();
         calendars.add(calendar);
         user.setCalendars(calendars);
+    }
+
+    @Override
+    public Optional<User> findUserById(UUID id) {
+        return userRepository.findUserById(id);
     }
 }
