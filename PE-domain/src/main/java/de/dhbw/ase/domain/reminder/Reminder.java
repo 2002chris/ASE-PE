@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -22,7 +23,7 @@ public class Reminder {
     private UUID id;
 
     @Column(name = "date")
-    private Date date;
+    private LocalDate date;
 
     @Column(name = "title")
     private String title;
@@ -30,7 +31,7 @@ public class Reminder {
     @Column(name= "description")
     private String description;
 
-    public Reminder(Date date, String title, String description) {
+    public Reminder(LocalDate date, String title, String description) {
         this.date = date;
         this.title = title;
         this.description = description;
