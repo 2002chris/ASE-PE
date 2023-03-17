@@ -19,7 +19,7 @@ public class GroupRepositoryBridge implements GroupRepository {
 
     @Override
     public Optional<Group> findGroupById(UUID uuid) {
-        return findGroupById(uuid);
+        return springDataGroupRepository.findGroupById(uuid);
     }
 
     @Override
