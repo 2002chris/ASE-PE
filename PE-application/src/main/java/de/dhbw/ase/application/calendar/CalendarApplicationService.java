@@ -1,6 +1,7 @@
 package de.dhbw.ase.application.calendar;
 
 import de.dhbw.ase.domain.calendar.Calendar;
+import de.dhbw.ase.domain.todo.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +32,13 @@ public class CalendarApplicationService implements CalendarApplication{
     @Override
     public Calendar save(Calendar calendar) {
         return calendarApplication.save(calendar);
+    }
+
+    @Override
+    public void addTodoToCalendar(Todo todo, Calendar calendar) {
+       List<Todo> todos = calendar.getTodos();
+       todos.add(todo);
+       calendar.setTodos(todos);
+       calendarApplication.save(calendar);
     }
 }

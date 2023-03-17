@@ -1,6 +1,7 @@
 package de.dhbw.ase.application.calendar;
 
 import de.dhbw.ase.domain.calendar.Calendar;
+import de.dhbw.ase.domain.todo.Todo;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,4 +13,6 @@ public interface CalendarApplication {
     Optional<Calendar> findCalendarById(UUID id);
 
     Calendar save(Calendar calendar);
+
+    void addTodoToCalendar(Todo todo, Calendar calendar);
 }
