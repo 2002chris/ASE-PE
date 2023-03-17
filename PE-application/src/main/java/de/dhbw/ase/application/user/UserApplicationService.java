@@ -3,6 +3,7 @@ package de.dhbw.ase.application.user;
 import de.dhbw.ase.domain.calendar.Calendar;
 import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.user.User;
+import de.dhbw.ase.domain.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,21 +12,21 @@ import java.util.List;
 @Service
 public class UserApplicationService implements UserApplication {
 
-    private final UserApplication userApplication;
+    private final UserRepository userRepository;
 
     @Autowired
-    public UserApplicationService(final UserApplication userApplication){
-        this.userApplication = userApplication;
+    public UserApplicationService(final UserRepository userRepository){
+        this.userRepository = userRepository;
     }
 
     @Override
     public List<User> findAllUsers() {
-        return userApplication.findAllUsers();
+        return userRepository.findAllUsers();
     }
 
     @Override
     public User save(User user) {
-        return userApplication.save(user);
+        return userRepository.save(user);
     }
 
     @Override

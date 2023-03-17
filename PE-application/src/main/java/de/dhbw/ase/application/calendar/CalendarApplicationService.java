@@ -1,6 +1,7 @@
 package de.dhbw.ase.application.calendar;
 
 import de.dhbw.ase.domain.calendar.Calendar;
+import de.dhbw.ase.domain.calendar.CalendarRepository;
 import de.dhbw.ase.domain.reminder.Reminder;
 import de.dhbw.ase.domain.todo.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,26 +14,26 @@ import java.util.UUID;
 @Service
 public class CalendarApplicationService implements CalendarApplication{
 
-    private final CalendarApplication calendarApplication;
+    private final CalendarRepository calendarRepository;
 
     @Autowired
-    public CalendarApplicationService(final CalendarApplication calendarApplication, CalendarApplication calendarApplication1) {
-        this.calendarApplication = calendarApplication1;
+    public CalendarApplicationService(final CalendarRepository calendarRepository) {
+        this.calendarRepository = calendarRepository;
     }
 
     @Override
     public List<Calendar> findAllCalendars() {
-        return calendarApplication.findAllCalendars();
+        return calendarRepository.findAllCalendars();
     }
 
     @Override
     public Optional<Calendar> findCalendarById(UUID id) {
-        return calendarApplication.findCalendarById(id);
+        return calendarRepository.findCalendarById(id);
     }
 
     @Override
     public Calendar save(Calendar calendar) {
-        return calendarApplication.save(calendar);
+        return calendarRepository.save(calendar);
     }
 
     @Override
@@ -40,7 +41,6 @@ public class CalendarApplicationService implements CalendarApplication{
        List<Todo> todos = calendar.getTodos();
        todos.add(todo);
        calendar.setTodos(todos);
-       calendarApplication.save(calendar);
     }
 
     @Override
