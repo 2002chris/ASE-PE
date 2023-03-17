@@ -11,7 +11,12 @@ import java.util.UUID;
 @Repository
 public class GroupRepositoryBridge implements GroupRepository {
 
-    SpringDataGroupRepository springDataGroupRepository;
+    private final SpringDataGroupRepository springDataGroupRepository;
+
+    public GroupRepositoryBridge(final SpringDataGroupRepository springDataGroupRepository) {
+        this.springDataGroupRepository = springDataGroupRepository;
+    }
+
     @Override
     public List<Group> findAllGroups() {
         return springDataGroupRepository.findAll();
@@ -24,6 +29,6 @@ public class GroupRepositoryBridge implements GroupRepository {
 
     @Override
     public Group save(Group group) {
-        return null;
+        return springDataGroupRepository.save(group);
     }
 }
