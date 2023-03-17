@@ -29,10 +29,11 @@ public class Todo {
     @OneToMany()
     private List<Tag> tags;
 
-    public Todo(LocalDate until_date, String content) {
+    public Todo(LocalDate until_date, String content, List<Tag> tags) {
         this.id = UUID.randomUUID();
         this.untilDate = until_date;
         this.content = content;
+        this.tags = tags;
     }
 
 
