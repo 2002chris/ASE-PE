@@ -38,30 +38,32 @@ public class DbInsert {
         this.tagApplication = tagApplication;
     }
 
-    @PostConstruct
+//    @PostConstruct
     public void init(){
-        Todo todo1 = new Todo(LocalDate.now(), "test123", new ArrayList<Tag>());
-        Group group1 = new Group(new ArrayList<User>(),new ArrayList<Todo>());
-        User user1 = new User("user1","1234",
-                new ArrayList<Todo>(), new ArrayList<Calendar>());
-        Calendar calendar1 = new Calendar(new ArrayList<Todo>(), new ArrayList<Reminder>());
-        Reminder reminder1 = new Reminder(LocalDate.now(), "test1", "test123");
-        Tag tag1 = new Tag("test");
+        for (int i = 0; i < 10; i++) {
+            Todo todo = new Todo(LocalDate.now(), "test"+i, new ArrayList<Tag>());
+            Group group = new Group(new ArrayList<User>(),new ArrayList<Todo>());
+            User user = new User("user"+i,"1234"+i,
+                    new ArrayList<Todo>(), new ArrayList<Calendar>());
+            Calendar calendar = new Calendar(new ArrayList<Todo>(), new ArrayList<Reminder>());
+            Reminder reminder = new Reminder(LocalDate.now(), "test1", "test123");
+            Tag tag = new Tag("test"+i);
 
-        todoApplication.addTagToTodo(tag1,todo1);
-        groupApplication.addUserToGroup(user1, group1);
-        groupApplication.addTodoToGroup(todo1, group1);
-        userApplication.addTodoToUser(todo1,user1);
-        userApplication.addCalendarToUser(calendar1, user1);
-        calendarApplication.addTodoToCalendar(todo1, calendar1);
-        calendarApplication.addReminderToCalendar(reminder1, calendar1);
+            todoApplication.addTagToTodo(tag,todo);
+            groupApplication.addUserToGroup(user, group);
+            groupApplication.addTodoToGroup(todo, group);
+            userApplication.addTodoToUser(todo,user);
+            userApplication.addCalendarToUser(calendar, user);
+            calendarApplication.addTodoToCalendar(todo, calendar);
+            calendarApplication.addReminderToCalendar(reminder, calendar);
 
-        tagApplication.save(tag1);
-        todoApplication.save(todo1);
-        reminderApplication.save(reminder1);
-        calendarApplication.save(calendar1);
-        userApplication.save(user1);
-        groupApplication.save(group1);
+            tagApplication.save(tag);
+            todoApplication.save(todo);
+            reminderApplication.save(reminder);
+            calendarApplication.save(calendar);
+            userApplication.save(user);
+            groupApplication.save(group);
+        }
 
 
 
