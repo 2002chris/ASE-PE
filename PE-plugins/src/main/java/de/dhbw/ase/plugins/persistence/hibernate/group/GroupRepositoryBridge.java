@@ -24,6 +24,6 @@ public class GroupRepositoryBridge implements GroupRepository {
 
     @Override
     public Group save(Group group) {
-        return null;
+        return springDataGroupRepository.save(group);
     }
 }
