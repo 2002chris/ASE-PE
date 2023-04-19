@@ -28,9 +28,13 @@ public class Calendar {
     @Column(name = "id")
     private UUID id;
 
-    public Calendar(List<Todo> todos, List<Reminder> reminders) {
+    @Column(name="name")
+    private String name;
+
+    public Calendar(List<Todo> todos, List<Reminder> reminders, String name) {
         this.id = UUID.randomUUID();
         this.todos = todos;
         this.reminder = reminders;
+        this.name = name;
     }
 }

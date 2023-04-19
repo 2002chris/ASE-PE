@@ -45,7 +45,7 @@ public class DbInsert {
             Group group = new Group(new ArrayList<User>(),new ArrayList<Todo>());
             User user = new User("user"+i,"1234"+i,
                     new ArrayList<Todo>(), new ArrayList<Calendar>());
-            Calendar calendar = new Calendar(new ArrayList<Todo>(), new ArrayList<Reminder>());
+            Calendar calendar = new Calendar(new ArrayList<Todo>(), new ArrayList<Reminder>(), "test"+i);
             Reminder reminder = new Reminder(LocalDate.now(), "test1", "test123");
             Tag tag = new Tag("test"+i);
 
