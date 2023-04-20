@@ -11,20 +11,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(path="/api/reminder")
+@RequestMapping(path = "/api/reminder")
 public class ReminderController {
 
     private final ReminderApplication reminderApplication;
     private final ReminderToReminderResourceMapper reminderToReminderResourceMapper;
 
-    public ReminderController(final ReminderApplication reminderApplication, final ReminderToReminderResourceMapper reminderToReminderResourceMapper)
-    {
+    public ReminderController(final ReminderApplication reminderApplication, final ReminderToReminderResourceMapper reminderToReminderResourceMapper) {
         this.reminderApplication = reminderApplication;
         this.reminderToReminderResourceMapper = reminderToReminderResourceMapper;
     }
 
     @GetMapping
-    public List<ReminderResource> getReminders(){
+    public List<ReminderResource> getReminders() {
         return reminderApplication.findAllReminders().stream().map(reminderToReminderResourceMapper).collect(Collectors.toList());
     }
 }

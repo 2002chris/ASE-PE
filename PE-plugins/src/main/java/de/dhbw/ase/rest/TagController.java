@@ -19,14 +19,13 @@ public class TagController {
     private final TagToTagResourceMapper tagToTagResourceMapper;
 
     @Autowired
-    public TagController(final TagApplication tagApplication, final TagToTagResourceMapper tagToTagResourceMapper)
-    {
+    public TagController(final TagApplication tagApplication, final TagToTagResourceMapper tagToTagResourceMapper) {
         this.tagApplication = tagApplication;
         this.tagToTagResourceMapper = tagToTagResourceMapper;
     }
 
     @GetMapping
-    public List<TagResource> getTags(){
+    public List<TagResource> getTags() {
         return tagApplication.findAllTags().stream().map(tagToTagResourceMapper).collect(Collectors.toList());
     }
 }

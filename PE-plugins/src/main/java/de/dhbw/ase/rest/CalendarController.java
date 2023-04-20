@@ -14,26 +14,24 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(path="/api/calendar")
-public class CalendarController
-{
+@RequestMapping(path = "/api/calendar")
+public class CalendarController {
     private final CalendarApplication calendarApplication;
     private final CalendarToCalendarResourceMapper calendarToCalendarResourceMapper;
 
     @Autowired
-    public CalendarController(final CalendarApplication calendarApplication, final CalendarToCalendarResourceMapper calendarToCalendarResourceMapper)
-    {
+    public CalendarController(final CalendarApplication calendarApplication, final CalendarToCalendarResourceMapper calendarToCalendarResourceMapper) {
         this.calendarApplication = calendarApplication;
         this.calendarToCalendarResourceMapper = calendarToCalendarResourceMapper;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<CalendarResource> getCalendars(){
+    public List<CalendarResource> getCalendars() {
         return calendarApplication.findAllCalendars().stream().map(calendarToCalendarResourceMapper).collect(Collectors.toList());
     }
 
     @GetMapping(params = {"id"})
-    public CalendarResource getCalendar(String id){
+    public CalendarResource getCalendar(String id) {
         return calendarApplication.findCalendarById(UUID.fromString(id)).stream().map(calendarToCalendarResourceMapper).findFirst().get();
     }
 }
