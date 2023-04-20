@@ -10,9 +10,11 @@ import java.util.List;
 public class CalendarResource {
     private List<Reminder> reminder;
     private List<Todo> todos;
+    private String name;
 
-    public CalendarResource(final List<Todo> todos, final List<Reminder> reminder) {
+    public CalendarResource(final List<Todo> todos, final List<Reminder> reminder, String name) {
         this.todos = todos;
         this.reminder = reminder;
+        this.name = name;
     }
 }

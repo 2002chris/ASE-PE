@@ -14,6 +14,6 @@ public class CalendarToCalendarResourceMapper implements Function<Calendar, Cale
     }
 
     private CalendarResource map(Calendar calendar) {
-        return new CalendarResource(calendar.getTodos(),calendar.getReminder());
+        return new CalendarResource(calendar.getTodos(),calendar.getReminder(), calendar.getName());
     }
 }
