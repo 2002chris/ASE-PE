@@ -17,4 +17,6 @@ public interface TodoApplication {
 
     void addTagToTodo(Tag tag, Todo todo);
 
+    List<Todo> findUserTodos(String username);
+
 }

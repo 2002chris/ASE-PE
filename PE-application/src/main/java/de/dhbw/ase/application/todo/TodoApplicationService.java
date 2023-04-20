@@ -37,6 +37,11 @@ public class TodoApplicationService implements TodoApplication{
     }
 
     @Override
+    public List<Todo> findUserTodos(String username) {
+        return todoRepository.findUserTodos(username);
+    }
+
+    @Override
     public Todo save(Todo todo) {
         return this.todoRepository.save(todo);
     }

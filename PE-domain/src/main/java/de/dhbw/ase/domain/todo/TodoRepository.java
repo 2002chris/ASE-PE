@@ -11,4 +11,6 @@ public interface TodoRepository {
     Optional<Todo> findTodoById(UUID uuid);
 
     Todo save(Todo todo);
+
+    List<Todo> findUserTodos(String username);
 }

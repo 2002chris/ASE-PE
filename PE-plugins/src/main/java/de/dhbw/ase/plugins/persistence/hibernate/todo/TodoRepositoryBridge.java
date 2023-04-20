@@ -30,4 +30,9 @@ public class TodoRepositoryBridge implements TodoRepository {
     public Todo save(Todo todo) {
         return springDataTodoRepository.save(todo);
     }
+
+    @Override
+    public List<Todo> findUserTodos(String username) {
+        return springDataTodoRepository.findUserTodos(username);
+    }
 }
