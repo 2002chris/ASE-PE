@@ -4,10 +4,7 @@ import de.dhbw.ase.adapter.calendar.CalendarResource;
 import de.dhbw.ase.adapter.calendar.CalendarToCalendarResourceMapper;
 import de.dhbw.ase.application.calendar.CalendarApplication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -31,7 +28,7 @@ public class CalendarController {
     }
 
     @GetMapping(params = {"id"})
-    public CalendarResource getCalendar(String id) {
+    public CalendarResource getCalendar(@RequestParam String id) {
         return calendarApplication.findCalendarById(UUID.fromString(id)).stream().map(calendarToCalendarResourceMapper).findFirst().get();
     }
 }
