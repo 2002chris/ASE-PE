@@ -4,6 +4,7 @@ import de.dhbw.ase.plugins.security.AuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -12,7 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 
     @Autowired
     private AuthenticationEntryPoint authenticationEntryPoint;
@@ -25,21 +26,29 @@ public class WebSecurityConfig {
         this.customAuthProvider = customAuthProvider;
     }
 
+//    @Bean
+//    public AuthenticationManager authManager(HttpSecurity http) throws Exception {
+//        AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+//        authenticationManagerBuilder.authenticationProvider(customAuthProvider);
+//        return authenticationManagerBuilder.build();
+//    }
+
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
         auth.authenticationProvider(customAuthProvider);
     }
 
-    @Bean
-    protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
         http
-                .httpBasic()
-//                .authenticationEntryPoint(authenticationEntryPoint)
-                .and()
                 .authorizeRequests()
-                    .antMatchers("/auth/*").permitAll()
-                .anyRequest().authenticated();
-        return http.build();
+                .antMatchers("/auth/*").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .httpBasic();
+//                .authenticationEntryPoint(authenticationEntryPoint)
+
+//        return http.build();
     }
 
     protected SecurityFilterChain filterChain2(HttpSecurity http) throws Exception{

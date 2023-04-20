@@ -8,7 +8,10 @@ import org.springframework.security.authentication.AuthenticationServiceExceptio
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
+
+import java.util.Collections;
 
 @Component
 public class CustomAuthProvider implements AuthenticationProvider {
@@ -22,9 +25,12 @@ public class CustomAuthProvider implements AuthenticationProvider {
         String userName = authentication.getName();
         String password = authentication.getCredentials().toString();
 
-        if (userApplication.findUserByName(userName).isPresent()
-                && password.equals(userApplication.findUserByName(userName).get().getPassword())) {
-            return new UsernamePasswordAuthenticationToken(userName, password);
+        if (userApplication.findUserByName(userName).isPresent()){
+
+                if(password.equals(userApplication.findUserByName(userName).get().getPassword())) {
+                return new UsernamePasswordAuthenticationToken(userName, password,
+                        Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")));
+            }
         }
         throw new AuthenticationServiceException("");
     }
