@@ -3,9 +3,7 @@ package de.dhbw.ase.rest;
 import de.dhbw.ase.adapter.user.UserResource;
 import de.dhbw.ase.adapter.user.UserToUserResourceMapper;
 import de.dhbw.ase.application.user.UserApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,5 +24,11 @@ public class UserController {
     public List<UserResource> getAllUser(){
         return userApplication.findAllUsers().stream()
                 .map(userToUserResourceMapper).collect(Collectors.toList());
+    }
+
+    @GetMapping(params = {"name"})
+    public UserResource getUserByName(@RequestParam(name = "name") String name){
+        return userApplication.findUserByName(name).stream()
+                .map(userToUserResourceMapper).findFirst().get();
     }
 }
