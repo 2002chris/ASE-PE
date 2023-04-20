@@ -17,7 +17,7 @@ public class UserApplicationService implements UserApplication {
     private final UserRepository userRepository;
 
     @Autowired
-    public UserApplicationService(final UserRepository userRepository){
+    public UserApplicationService(final UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -32,7 +32,7 @@ public class UserApplicationService implements UserApplication {
     }
 
     @Override
-    public void addTodoToUser(Todo todo, User user){
+    public void addTodoToUser(Todo todo, User user) {
         List<Todo> todos = user.getTodos();
         todos.add(todo);
         user.setTodos(todos);
@@ -48,5 +48,10 @@ public class UserApplicationService implements UserApplication {
     @Override
     public Optional<User> findUserById(UUID id) {
         return userRepository.findUserById(id);
+    }
+
+    @Override
+    public Optional<User> findUserByName(String name) {
+        return userRepository.findUserByName(name);
     }
 }

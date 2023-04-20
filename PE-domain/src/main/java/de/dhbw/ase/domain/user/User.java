@@ -18,11 +18,11 @@ import java.util.UUID;
 @Table(name = "users")
 public class User {
 
-    @Column(name="name")
+    @Column(name = "name", unique = true)
     private String name;
     @Column(name = "password")
     private String password;
-    @Column(name= "todos")
+    @Column(name = "todos")
     @OneToMany
     private List<Todo> todos;
     @Column(name = "calendars")
@@ -30,7 +30,7 @@ public class User {
     private List<Calendar> calendars;
 
     @Id
-    @Type(type="uuid-char")
+    @Type(type = "uuid-char")
     @Column(name = "id")
     private UUID id;
 

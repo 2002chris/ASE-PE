@@ -15,7 +15,10 @@ public interface UserApplication {
     User save(User user);
 
     void addTodoToUser(Todo todo, User user);
+
     void addCalendarToUser(Calendar calendar, User user);
 
     Optional<User> findUserById(UUID id);
+
+    Optional<User> findUserByName(String name);
 }
