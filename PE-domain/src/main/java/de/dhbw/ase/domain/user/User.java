@@ -9,6 +9,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -23,10 +24,10 @@ public class User {
     @Column(name = "password")
     private String password;
     @Column(name = "todos")
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="user", targetEntity = Todo.class, cascade = CascadeType.REMOVE)
     private List<Todo> todos;
     @Column(name = "calendars")
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="user", targetEntity = Calendar.class, cascade = CascadeType.REMOVE)
     private List<Calendar> calendars;
 
     @Id
