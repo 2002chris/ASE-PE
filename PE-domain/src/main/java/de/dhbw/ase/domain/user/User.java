@@ -30,6 +30,8 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY, mappedBy="user", targetEntity = Calendar.class, cascade = CascadeType.REMOVE)
     private List<Calendar> calendars;
 
+
+    //TODO ändere id zum username, weil username ist schon eindeutig
     @Id
     @Type(type = "uuid-char")
     @Column(name = "id")
