@@ -1,6 +1,7 @@
 package de.dhbw.ase.domain.todo;
 
 import de.dhbw.ase.domain.Tag.Tag;
+import de.dhbw.ase.domain.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,15 +28,21 @@ public class Todo {
     @Column(name = "content")
     private String content;
 
+    //todo unidirektionale verbindung zum User
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name="user_id")
+    private User user;
+
     @Column(name = "tags")
     @OneToMany()
     private List<Tag> tags;
 
-    public Todo(LocalDate until_date, String content, List<Tag> tags) {
+    public Todo(LocalDate until_date, String content, List<Tag> tags, User user) {
         this.id = UUID.randomUUID();
         this.untilDate = until_date;
         this.content = content;
         this.tags = tags;
+        this.user = user;
     }
 
 
