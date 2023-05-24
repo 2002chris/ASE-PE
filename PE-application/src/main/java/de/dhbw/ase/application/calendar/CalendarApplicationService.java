@@ -38,15 +38,15 @@ public class CalendarApplicationService implements CalendarApplication{
 
     @Override
     public void addTodoToCalendar(Todo todo, Calendar calendar) {
-       List<Todo> todos = calendar.getTodos();
-       todos.add(todo);
-       calendar.setTodos(todos);
+//       List<Todo> todos = calendar.getTodos();
+//       todos.add(todo);
+//       calendar.setTodos(todos);
     }
 
     @Override
     public void addReminderToCalendar(Reminder reminder, Calendar calendar) {
-        List<Reminder> reminders = calendar.getReminder();
-        reminders.add(reminder);
-        calendar.setReminder(reminders);
+//        List<Reminder> reminders = calendar.getReminder();
+//        reminders.add(reminder);
+//        calendar.setReminder(reminders);
     }
 }

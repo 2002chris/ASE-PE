@@ -4,6 +4,7 @@ import de.dhbw.ase.domain.Tag.Tag;
 import de.dhbw.ase.domain.calendar.CalendarRepository;
 import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.todo.TodoRepository;
+import de.dhbw.ase.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,16 +31,21 @@ public class TodoApplicationService implements TodoApplication{
     }
 
     @Override
-    public void addTagToTodo(Tag tag, Todo todo) {
-        List<Tag> tags = todo.getTags();
-        tags.add(tag);
-        todo.setTags(tags);
+    public List<Todo> findTodoByUser(User user) {
+        return this.todoRepository.findTodoByUser(user);
     }
 
-    @Override
-    public List<Todo> findUserTodos(String username) {
-        return todoRepository.findUserTodos(username);
-    }
+//    @Override
+//    public void addTagToTodo(Tag tag, Todo todo) {
+//        List<Tag> tags = todo.getTags();
+//        tags.add(tag);
+//        todo.setTags(tags);
+//    }
+
+//    @Override
+//    public List<Todo> findUserTodos(String username) {
+//        return todoRepository.findUserTodos(username);
+//    }
 
     @Override
     public Todo save(Todo todo) {

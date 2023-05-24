@@ -1,14 +1,14 @@
 package de.dhbw.ase.domain.reminder;
 
+import de.dhbw.ase.domain.calendar.Calendar;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
@@ -21,7 +21,7 @@ import java.util.UUID;
 public class Reminder {
     @Id
     @Type(type="uuid-char")
-    @Column(name = "id")
+    @Column(name = "reminder_id")
     private UUID id;
 
     @Column(name = "date")
@@ -33,10 +33,16 @@ public class Reminder {
     @Column(name= "description")
     private String description;
 
-    public Reminder(LocalDate date, String title, String description) {
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "calendar_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Calendar calendar;
+
+    public Reminder(LocalDate date, String title, String description, Calendar calendar) {
         this.date = date;
         this.title = title;
         this.description = description;
+        this.calendar = calendar;
 
         this.id = UUID.randomUUID();
     }

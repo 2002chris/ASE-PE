@@ -1,5 +1,7 @@
 package de.dhbw.ase.domain.todo;
 
+import de.dhbw.ase.domain.user.User;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -12,5 +14,7 @@ public interface TodoRepository {
 
     Todo save(Todo todo);
 
-    List<Todo> findUserTodos(String username);
+//    List<Todo> findUserTodos(String username);
+
+    List<Todo> findTodoByUser(User user);
 }

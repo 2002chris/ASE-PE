@@ -11,13 +11,13 @@ public class UserResource {
 
     private String name;
     private String password;
-    private List<Todo> todos;
-    private List<Calendar> calendars;
+//    private List<Todo> todos;
+//    private List<Calendar> calendars;
 
-    public UserResource(String name, String password, List<Todo> todos, List<Calendar> calendars) {
+    public UserResource(String name, String password) {
         this.name = name;
         this.password = password;
-        this.todos = todos;
-        this.calendars = calendars;
+//        this.todos = todos;
+//        this.calendars = calendars;
     }
 }

@@ -2,6 +2,7 @@ package de.dhbw.ase.plugins.persistence.hibernate.todo;
 
 import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.todo.TodoRepository;
+import de.dhbw.ase.domain.user.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -32,7 +33,12 @@ public class TodoRepositoryBridge implements TodoRepository {
     }
 
     @Override
-    public List<Todo> findUserTodos(String username) {
-        return springDataTodoRepository.findUserTodos(username);
+    public List<Todo> findTodoByUser(User user) {
+        return springDataTodoRepository.findByUser(user);
     }
+
+//    @Override
+//    public List<Todo> findUserTodos(String username) {
+//        return springDataTodoRepository.findUserTodos(username);
+//    }
 }

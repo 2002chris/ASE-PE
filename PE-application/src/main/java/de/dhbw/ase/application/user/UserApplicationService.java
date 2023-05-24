@@ -33,12 +33,12 @@ public class UserApplicationService implements UserApplication {
 
     @Override
     public void addTodoToUser(Todo todo, User user) {
-        user.getTodos().add(todo);
+//        user.getTodos().add(todo);
     }
 
     @Override
     public void addCalendarToUser(Calendar calendar, User user) {
-        user.getCalendars().add(calendar);
+//        user.getCalendars().add(calendar);
     }
 
     @Override

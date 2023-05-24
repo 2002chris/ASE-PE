@@ -1,10 +1,13 @@
 package de.dhbw.ase.domain.todo;
 
 import de.dhbw.ase.domain.Tag.Tag;
+import de.dhbw.ase.domain.calendar.Calendar;
 import de.dhbw.ase.domain.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -21,7 +24,7 @@ import java.util.UUID;
 public class Todo {
     @Id
     @Type(type="uuid-char") //Viktor hat geholfen und will die Credits haben <- jetzt kann er sich einmal geil fühlen
-    @Column(name = "id")
+    @Column(name = "todo_id")
     private UUID id;
     @Column(name = "until_date")
     private LocalDate untilDate;
@@ -29,20 +32,29 @@ public class Todo {
     private String content;
 
     //todo unidirektionale verbindung zum User
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
-    @Column(name = "tags")
-    @OneToMany()
-    private List<Tag> tags;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "calendar_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Calendar calendar;
 
-    public Todo(LocalDate until_date, String content, List<Tag> tags, User user) {
+//    @Column(name = "tags")
+//    @OneToMany()
+//    private List<Tag> tags;
+
+    public Todo(LocalDate until_date, String content,
+//                List<Tag> tags,
+                User user, Calendar calendar) {
         this.id = UUID.randomUUID();
         this.untilDate = until_date;
         this.content = content;
-        this.tags = tags;
+//        this.tags = tags;
         this.user = user;
+        this.calendar = calendar;
     }
 
 

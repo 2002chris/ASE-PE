@@ -13,7 +13,6 @@ public class UserToUserResourceMapper implements Function<User, UserResource> {
     }
 
     public UserResource map(User user){
-        return new UserResource(user.getName(), user.getPassword(),
-                user.getTodos(), user.getCalendars());
+        return new UserResource(user.getName(), user.getPassword());
     }
 }

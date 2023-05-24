@@ -12,8 +12,8 @@ import java.util.UUID;
 public interface SpringDataTodoRepository extends JpaRepository<Todo, UUID> {
     public Optional<Todo> findTodoById(UUID id);
 
-    @Query(value = "select * from todo where id = (select users_todos.todos_id from users right join users_todos on users.id = users_todos.user_id where users.name = ?1 )", nativeQuery = true)
-    List<Todo> findUserTodos(String username);
+//    @Query(value = "select * from todo where id = (select users_todos.todos_id from users right join users_todos on users.id = users_todos.user_id where users.name = ?1 )", nativeQuery = true)
+//    List<Todo> findUserTodos(String username);
 
     List<Todo> findByUser(User user);
 }

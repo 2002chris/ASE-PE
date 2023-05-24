@@ -8,13 +8,13 @@ import java.util.List;
 
 @Getter
 public class CalendarResource {
-    private List<Reminder> reminder;
-    private List<Todo> todos;
+//    private List<Reminder> reminder;
+//    private List<Todo> todos;
     private String name;
 
-    public CalendarResource(final List<Todo> todos, final List<Reminder> reminder, String name) {
-        this.todos = todos;
-        this.reminder = reminder;
+    public CalendarResource(String name) {
+//        this.todos = todos;
+//        this.reminder = reminder;
         this.name = name;
     }
 }

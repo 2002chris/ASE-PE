@@ -2,6 +2,7 @@ package de.dhbw.ase.application.todo;
 
 import de.dhbw.ase.domain.Tag.Tag;
 import de.dhbw.ase.domain.todo.Todo;
+import de.dhbw.ase.domain.user.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,8 +16,10 @@ public interface TodoApplication {
 
     Optional<Todo> findTodoById(UUID id);
 
-    void addTagToTodo(Tag tag, Todo todo);
+    List<Todo> findTodoByUser(User user);
 
-    List<Todo> findUserTodos(String username);
+//    void addTagToTodo(Tag tag, Todo todo);
+
+//    List<Todo> findUserTodos(String username);
 
 }

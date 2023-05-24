@@ -22,23 +22,23 @@ public class User {
     private String name;
     @Column(name = "password")
     private String password;
-    @Column(name = "todos")
-    @OneToMany
-    private List<Todo> todos;
-    @Column(name = "calendars")
-    @OneToMany
-    private List<Calendar> calendars;
+//    @Column(name = "todos")
+//    @OneToMany
+//    private List<Todo> todos;
 
+//    @Column(name = "calendars")
+//    @OneToMany
+//    private List<Calendar> calendars;
     @Id
     @Type(type = "uuid-char")
-    @Column(name = "id")
+    @Column(name = "user_id")
     private UUID id;
 
-    public User(String name, String password, List<Todo> todos, List<Calendar> calendars) {
+    public User(String name, String password) {
         this.name = name;
         this.password = password;
-        this.todos = todos;
-        this.calendars = calendars;
+//        this.todos = todos;
+//        this.calendars = calendars;
 
         this.id = UUID.randomUUID();
     }
