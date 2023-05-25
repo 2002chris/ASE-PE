@@ -15,8 +15,6 @@ public interface TodoRepository {
 
     Todo save(Todo todo);
 
-//    List<Todo> findUserTodos(String username);
-
     List<Todo> findTodoByTags(List<Tag> tags);
 
     List<Todo> findTodoByUser(User user);

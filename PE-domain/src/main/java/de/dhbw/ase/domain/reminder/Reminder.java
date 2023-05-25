@@ -10,7 +10,6 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -20,7 +19,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Reminder {
     @Id
-    @Type(type="uuid-char")
+    @Type(type = "uuid-char")
     @Column(name = "reminder_id")
     private UUID id;
 
@@ -30,7 +29,7 @@ public class Reminder {
     @Column(name = "title")
     private String title;
 
-    @Column(name= "description")
+    @Column(name = "description")
     private String description;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)

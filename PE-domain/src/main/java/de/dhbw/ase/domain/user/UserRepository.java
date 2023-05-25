@@ -11,5 +11,6 @@ public interface UserRepository {
     Optional<User> findUserById(UUID id);
 
     Optional<User> findUserByName(String name);
+
     User save(User user);
 }

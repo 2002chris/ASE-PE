@@ -14,6 +14,7 @@ public interface UserApplication {
 
     User save(User user);
 
+    //TODO evaluiere umsetzung von diesem use case
     void addTodoToUser(Todo todo, User user);
 
     void addCalendarToUser(Calendar calendar, User user);

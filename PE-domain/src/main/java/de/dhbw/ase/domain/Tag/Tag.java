@@ -1,6 +1,5 @@
 package de.dhbw.ase.domain.Tag;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +15,7 @@ public class Tag {
     @Id
     private String name;
 
-    public Tag(String name){
+    public Tag(String name) {
         this.name = name.toLowerCase();
     }
 

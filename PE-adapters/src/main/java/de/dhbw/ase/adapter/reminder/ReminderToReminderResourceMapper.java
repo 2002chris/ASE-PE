@@ -1,7 +1,6 @@
 package de.dhbw.ase.adapter.reminder;
 
 import de.dhbw.ase.domain.reminder.Reminder;
-import de.dhbw.ase.domain.reminder.ReminderRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
@@ -14,7 +13,6 @@ public class ReminderToReminderResourceMapper implements Function<Reminder, Remi
     }
 
     ReminderResource map(Reminder reminder) {
-        return new ReminderResource(reminder.getDate(), reminder.getTitle(),
-                reminder.getDescription());
+        return new ReminderResource(reminder.getDate(), reminder.getTitle(), reminder.getDescription());
     }
 }

@@ -1,7 +1,6 @@
 package de.dhbw.ase.application.todo;
 
 import de.dhbw.ase.domain.Tag.Tag;
-import de.dhbw.ase.domain.calendar.CalendarRepository;
 import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.todo.TodoRepository;
 import de.dhbw.ase.domain.user.User;
@@ -13,7 +12,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class TodoApplicationService implements TodoApplication{
+public class TodoApplicationService implements TodoApplication {
     private final TodoRepository todoRepository;
 
     @Autowired
@@ -47,10 +46,6 @@ public class TodoApplicationService implements TodoApplication{
 //        todo.setTags(tags);
 //    }
 
-//    @Override
-//    public List<Todo> findUserTodos(String username) {
-//        return todoRepository.findUserTodos(username);
-//    }
 
     @Override
     public Todo save(Todo todo) {

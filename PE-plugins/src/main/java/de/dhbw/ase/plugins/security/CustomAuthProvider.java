@@ -1,7 +1,6 @@
 package de.dhbw.ase.plugins.security;
 
 import de.dhbw.ase.application.user.UserApplication;
-import de.dhbw.ase.plugins.persistence.hibernate.user.UserRepositoryBridge;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.AuthenticationServiceException;
@@ -25,11 +24,10 @@ public class CustomAuthProvider implements AuthenticationProvider {
         String userName = authentication.getName();
         String password = authentication.getCredentials().toString();
 
-        if (userApplication.findUserByName(userName).isPresent()){
+        if (userApplication.findUserByName(userName).isPresent()) {
 
-                if(password.equals(userApplication.findUserByName(userName).get().getPassword())) {
-                return new UsernamePasswordAuthenticationToken(userName, password,
-                        Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")));
+            if (password.equals(userApplication.findUserByName(userName).get().getPassword())) {
+                return new UsernamePasswordAuthenticationToken(userName, password, Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")));
             }
         }
         throw new AuthenticationServiceException("");

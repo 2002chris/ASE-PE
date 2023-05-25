@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class CalendarApplicationService implements CalendarApplication{
+public class CalendarApplicationService implements CalendarApplication {
 
     private final CalendarRepository calendarRepository;
 

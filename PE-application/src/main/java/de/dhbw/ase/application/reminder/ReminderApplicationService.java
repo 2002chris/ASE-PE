@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class ReminderApplicationService implements ReminderApplication{
+public class ReminderApplicationService implements ReminderApplication {
 
     private final ReminderRepository reminderRepository;
 

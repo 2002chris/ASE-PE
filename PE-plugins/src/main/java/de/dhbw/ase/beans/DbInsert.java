@@ -24,9 +24,8 @@ public class DbInsert {
     private final CalendarApplication calendarApplication;
     private final ReminderApplication reminderApplication;
     private final TagApplication tagApplication;
-    public DbInsert(final TodoApplication todoApplication,
-                    final UserApplication userApplication, final CalendarApplication calendarApplication,
-                    final ReminderApplication reminderApplication,final TagApplication tagApplication) {
+
+    public DbInsert(final TodoApplication todoApplication, final UserApplication userApplication, final CalendarApplication calendarApplication, final ReminderApplication reminderApplication, final TagApplication tagApplication) {
         this.todoApplication = todoApplication;
         this.userApplication = userApplication;
         this.calendarApplication = calendarApplication;
@@ -35,25 +34,22 @@ public class DbInsert {
     }
 
     @PostConstruct
-    public void init(){
+    public void init() {
         Tag tag = new Tag("arbeit");
         Tag tag2 = new Tag("privat");
         for (int i = 0; i < 10; i++) {
-            User user = new User("user"+i, "test");
-            Calendar calendar = new Calendar("calendar"+i, user);
+            User user = new User("user" + i, "test");
+            Calendar calendar = new Calendar("calendar" + i, user);
 
-            Todo calendarTodo = new Todo(LocalDate.now(), "calendarTodo" + i,
-                    new ArrayList<>(){{
-                        this.add(tag);}
-                    },
-                    null, calendar);
-            Todo userTodo = new Todo(LocalDate.now(), "userTodo"+i,
-                    new ArrayList<>(){{
-                        this.add(tag2);
-                        this.add(tag);
-                    }},
-                    user, null);
-            Reminder reminder = new Reminder(LocalDate.now(), "reminder"+i, "test"+i, calendar);
+            Todo calendarTodo = new Todo(LocalDate.now(), "calendarTodo" + i, new ArrayList<>() {
+                {
+                    this.add(tag);
+                }}, null, calendar);
+            Todo userTodo = new Todo(LocalDate.now(), "userTodo" + i, new ArrayList<>() {{
+                this.add(tag2);
+                this.add(tag);
+            }}, user, null);
+            Reminder reminder = new Reminder(LocalDate.now(), "reminder" + i, "test" + i, calendar);
             this.userApplication.save(user);
             this.calendarApplication.save(calendar);
             this.tagApplication.save(tag);
@@ -62,9 +58,6 @@ public class DbInsert {
             this.todoApplication.save(userTodo);
             this.reminderApplication.save(reminder);
         }
-
-
-
 
 
     }

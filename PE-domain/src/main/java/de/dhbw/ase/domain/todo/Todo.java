@@ -22,7 +22,7 @@ import java.util.UUID;
 @Table(name = "todo")
 public class Todo {
     @Id
-    @Type(type="uuid-char") //Viktor hat geholfen und will die Credits haben <- jetzt kann er sich einmal geil fühlen
+    @Type(type = "uuid-char") //Viktor hat geholfen und will die Credits haben <- jetzt kann er sich einmal geil fühlen
     @Column(name = "todo_id")
     private UUID id;
     @Column(name = "until_date")
@@ -31,7 +31,7 @@ public class Todo {
     private String content;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
@@ -41,16 +41,10 @@ public class Todo {
     private Calendar calendar;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-            name = "todo_tags",
-            joinColumns = @JoinColumn(name = "todo_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_name")
-    )
+    @JoinTable(name = "todo_tags", joinColumns = @JoinColumn(name = "todo_id"), inverseJoinColumns = @JoinColumn(name = "tag_name"))
     private List<Tag> tags;
 
-    public Todo(LocalDate until_date, String content,
-                List<Tag> tags,
-                User user, Calendar calendar) {
+    public Todo(LocalDate until_date, String content, List<Tag> tags, User user, Calendar calendar) {
         this.id = UUID.randomUUID();
         this.untilDate = until_date;
         this.content = content;

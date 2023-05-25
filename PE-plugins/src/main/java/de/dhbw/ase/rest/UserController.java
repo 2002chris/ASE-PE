@@ -21,14 +21,12 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<UserResource> getAllUser(){
-        return userApplication.findAllUsers().stream()
-                .map(userToUserResourceMapper).collect(Collectors.toList());
+    public List<UserResource> getAllUser() {
+        return userApplication.findAllUsers().stream().map(userToUserResourceMapper).collect(Collectors.toList());
     }
 
     @GetMapping(params = {"name"})
-    public UserResource getUserByName(@RequestParam(name = "name") String name){
-        return userApplication.findUserByName(name).stream()
-                .map(userToUserResourceMapper).findFirst().get();
+    public UserResource getUserByName(@RequestParam(name = "name") String name) {
+        return userApplication.findUserByName(name).stream().map(userToUserResourceMapper).findFirst().get();
     }
 }

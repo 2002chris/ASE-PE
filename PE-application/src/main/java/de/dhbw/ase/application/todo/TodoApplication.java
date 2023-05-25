@@ -20,8 +20,8 @@ public interface TodoApplication {
 
     List<Todo> findTodoByTags(List<Tag> tags);
 
+    //TODO change to update todo
 //    void addTagToTodo(Tag tag, Todo todo);
 
-//    List<Todo> findUserTodos(String username);
 
 }

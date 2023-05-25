@@ -3,7 +3,6 @@ package de.dhbw.ase.plugins.persistence.hibernate.reminder;
 import de.dhbw.ase.domain.reminder.Reminder;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 

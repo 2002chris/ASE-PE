@@ -9,13 +9,11 @@ import java.util.List;
 @Getter
 public class TodoResource {
 
-    private LocalDate untilDate;
-    private String content;
-    private List<Tag> tags;
+    private final LocalDate untilDate;
+    private final String content;
+    private final List<Tag> tags;
 
-    public TodoResource(final LocalDate untilDate, final String content
-            , final List<Tag> tags
-            ){
+    public TodoResource(final LocalDate untilDate, final String content, final List<Tag> tags) {
         this.untilDate = untilDate;
         this.content = content;
         this.tags = tags;

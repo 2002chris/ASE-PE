@@ -1,14 +1,14 @@
 package de.dhbw.ase.domain.user;
 
-import de.dhbw.ase.domain.calendar.Calendar;
-import de.dhbw.ase.domain.todo.Todo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.UUID;
 
 @Entity
@@ -22,13 +22,6 @@ public class User {
     private String name;
     @Column(name = "password")
     private String password;
-//    @Column(name = "todos")
-//    @OneToMany
-//    private List<Todo> todos;
-
-//    @Column(name = "calendars")
-//    @OneToMany
-//    private List<Calendar> calendars;
     @Id
     @Type(type = "uuid-char")
     @Column(name = "user_id")
@@ -37,9 +30,6 @@ public class User {
     public User(String name, String password) {
         this.name = name;
         this.password = password;
-//        this.todos = todos;
-//        this.calendars = calendars;
-
         this.id = UUID.randomUUID();
     }
 }

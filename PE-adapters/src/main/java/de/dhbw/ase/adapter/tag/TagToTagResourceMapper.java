@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.function.Function;
 
 @Component
-public class TagToTagResourceMapper implements Function<Tag,TagResource> {
+public class TagToTagResourceMapper implements Function<Tag, TagResource> {
     @Override
     public TagResource apply(Tag tag) {
         return map(tag);

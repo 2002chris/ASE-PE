@@ -8,6 +8,8 @@ import java.util.UUID;
 
 public interface ReminderApplication {
     List<Reminder> findAllReminders();
+
     Optional<Reminder> findReminderById(UUID uuid);
+
     Reminder save(Reminder reminder);
 }

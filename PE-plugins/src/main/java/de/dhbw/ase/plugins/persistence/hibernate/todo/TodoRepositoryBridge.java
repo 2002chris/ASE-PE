@@ -38,7 +38,7 @@ public class TodoRepositoryBridge implements TodoRepository {
         return springDataTodoRepository.findByUser(user);
     }
 
-    public List<Todo> findTodoByTags(List<Tag> tags){
+    public List<Todo> findTodoByTags(List<Tag> tags) {
         return springDataTodoRepository.findByTagsIn(tags);
     }
 
