@@ -4,6 +4,7 @@ import de.dhbw.ase.adapter.todo.TodoResource;
 import de.dhbw.ase.adapter.todo.TodoToTodoResourceMapper;
 import de.dhbw.ase.application.todo.TodoApplication;
 import de.dhbw.ase.application.user.UserApplication;
+import de.dhbw.ase.domain.Tag.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,5 +38,11 @@ public class TodoController {
     public TodoResource getTodo(@RequestParam(name = "id") String id){
         return this.todoApplication.findTodoById(UUID.fromString(id))
                 .stream().map(todoToTodoResourceMapper).findFirst().get();
+    }
+
+    @GetMapping(params = {"tags"})
+    public List<TodoResource> getTodoByTags(@RequestParam(name = "tags") List<Tag> tags){
+        return this.todoApplication.findTodoByTags(tags).stream().map(todoToTodoResourceMapper)
+                .collect(Collectors.toList());
     }
 }

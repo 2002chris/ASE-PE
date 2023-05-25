@@ -12,7 +12,6 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,7 +30,6 @@ public class Todo {
     @Column(name = "content")
     private String content;
 
-    //todo unidirektionale verbindung zum User
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -42,17 +40,21 @@ public class Todo {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Calendar calendar;
 
-//    @Column(name = "tags")
-//    @OneToMany()
-//    private List<Tag> tags;
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "todo_tags",
+            joinColumns = @JoinColumn(name = "todo_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_name")
+    )
+    private List<Tag> tags;
 
     public Todo(LocalDate until_date, String content,
-//                List<Tag> tags,
+                List<Tag> tags,
                 User user, Calendar calendar) {
         this.id = UUID.randomUUID();
         this.untilDate = until_date;
         this.content = content;
-//        this.tags = tags;
+        this.tags = tags;
         this.user = user;
         this.calendar = calendar;
     }

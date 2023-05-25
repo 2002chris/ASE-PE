@@ -1,5 +1,6 @@
 package de.dhbw.ase.plugins.persistence.hibernate.todo;
 
+import de.dhbw.ase.domain.Tag.Tag;
 import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.todo.TodoRepository;
 import de.dhbw.ase.domain.user.User;
@@ -35,6 +36,10 @@ public class TodoRepositoryBridge implements TodoRepository {
     @Override
     public List<Todo> findTodoByUser(User user) {
         return springDataTodoRepository.findByUser(user);
+    }
+
+    public List<Todo> findTodoByTags(List<Tag> tags){
+        return springDataTodoRepository.findByTagsIn(tags);
     }
 
 //    @Override

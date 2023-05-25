@@ -14,7 +14,7 @@ public class TodoToTodoResourceMapper implements Function<Todo, TodoResource> {
 
     private TodoResource map(final Todo todo){
         return new TodoResource(todo.getUntilDate(), todo.getContent()
-//                , todo.getTags()
+                , todo.getTags()
         );
     }
 }

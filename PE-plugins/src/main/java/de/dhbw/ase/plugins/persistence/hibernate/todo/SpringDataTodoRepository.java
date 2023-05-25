@@ -1,9 +1,9 @@
 package de.dhbw.ase.plugins.persistence.hibernate.todo;
 
+import de.dhbw.ase.domain.Tag.Tag;
 import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,4 +16,6 @@ public interface SpringDataTodoRepository extends JpaRepository<Todo, UUID> {
 //    List<Todo> findUserTodos(String username);
 
     List<Todo> findByUser(User user);
+
+    List<Todo> findByTagsIn(List<Tag> tags);
 }

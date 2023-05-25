@@ -18,6 +18,8 @@ public interface TodoApplication {
 
     List<Todo> findTodoByUser(User user);
 
+    List<Todo> findTodoByTags(List<Tag> tags);
+
 //    void addTagToTodo(Tag tag, Todo todo);
 
 //    List<Todo> findUserTodos(String username);

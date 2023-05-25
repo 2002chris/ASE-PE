@@ -35,6 +35,11 @@ public class TodoApplicationService implements TodoApplication{
         return this.todoRepository.findTodoByUser(user);
     }
 
+    @Override
+    public List<Todo> findTodoByTags(List<Tag> tags) {
+        return this.todoRepository.findTodoByTags(tags);
+    }
+
 //    @Override
 //    public void addTagToTodo(Tag tag, Todo todo) {
 //        List<Tag> tags = todo.getTags();
