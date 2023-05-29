@@ -3,7 +3,7 @@ package de.dhbw.ase.adapter.user;
 import lombok.Getter;
 
 @Getter
-public class UserResource {
+public class UserResource implements UserResourceInterface {
 
     private final String name;
     private final String password;

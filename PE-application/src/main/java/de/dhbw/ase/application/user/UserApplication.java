@@ -22,4 +22,6 @@ public interface UserApplication {
     Optional<User> findUserById(UUID id);
 
     Optional<User> findUserByName(String name);
+
+    User create(UserAttributeData data);
 }

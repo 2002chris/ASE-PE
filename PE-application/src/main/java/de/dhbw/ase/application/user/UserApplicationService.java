@@ -50,4 +50,10 @@ public class UserApplicationService implements UserApplication {
     public Optional<User> findUserByName(String name) {
         return userRepository.findUserByName(name);
     }
+
+    @Override
+    public User create(UserAttributeData data) {
+        User user = new User(data.getName(), data.getPassword());
+        return userRepository.save(user);
+    }
 }

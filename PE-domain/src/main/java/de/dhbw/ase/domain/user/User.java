@@ -12,7 +12,6 @@ import javax.persistence.Table;
 import java.util.UUID;
 
 @Entity
-@NoArgsConstructor
 @Getter
 @Setter
 @Table(name = "users")
@@ -26,6 +25,10 @@ public class User {
     @Type(type = "uuid-char")
     @Column(name = "user_id")
     private UUID id;
+
+    public User(){
+        this.id = UUID.randomUUID();
+    }
 
     public User(String name, String password) {
         this.name = name;

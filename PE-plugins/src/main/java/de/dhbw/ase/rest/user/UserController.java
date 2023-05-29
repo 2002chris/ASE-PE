@@ -1,10 +1,11 @@
-package de.dhbw.ase.rest;
+package de.dhbw.ase.rest.user;
 
 import de.dhbw.ase.adapter.user.UserResource;
 import de.dhbw.ase.adapter.user.UserToUserResourceMapper;
 import de.dhbw.ase.application.user.UserApplication;
+import de.dhbw.ase.domain.user.User;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,5 +29,16 @@ public class UserController {
     @GetMapping(params = {"name"})
     public UserResource getUserByName(@RequestParam(name = "name") String name) {
         return userApplication.findUserByName(name).stream().map(userToUserResourceMapper).findFirst().get();
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<UserResource> create(@RequestBody UserData data){
+        if (data.getPassword() != null && data.getName() != null) {
+            User tempUser = userApplication.create(data);
+            if (tempUser != null){
+                return ResponseEntity.ok(userToUserResourceMapper.apply(tempUser));
+            }
+        }
+        return ResponseEntity.badRequest().build();
     }
 }
