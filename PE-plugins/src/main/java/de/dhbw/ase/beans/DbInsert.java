@@ -33,7 +33,7 @@ public class DbInsert {
         this.tagApplication = tagApplication;
     }
 
-    @PostConstruct
+   // @PostConstruct
     public void init() {
         Tag tag = new Tag("arbeit");
         Tag tag2 = new Tag("privat");
