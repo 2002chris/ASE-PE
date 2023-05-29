@@ -1,6 +1,8 @@
 package de.dhbw.ase.application.todo;
 
 import de.dhbw.ase.domain.Tag.Tag;
+import de.dhbw.ase.domain.calendar.Calendar;
+import de.dhbw.ase.domain.calendar.CalendarRepository;
 import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.todo.TodoRepository;
 import de.dhbw.ase.domain.user.User;
@@ -14,10 +16,12 @@ import java.util.UUID;
 @Service
 public class TodoApplicationService implements TodoApplication {
     private final TodoRepository todoRepository;
+    private final CalendarRepository calendarRepository;
 
     @Autowired
-    public TodoApplicationService(TodoRepository calendarRepository) {
-        this.todoRepository = calendarRepository;
+    public TodoApplicationService(TodoRepository todoRepository, CalendarRepository calendarRepository) {
+        this.todoRepository = todoRepository;
+        this.calendarRepository = calendarRepository;
     }
 
     public List<Todo> findAllTodos() {
@@ -37,6 +41,15 @@ public class TodoApplicationService implements TodoApplication {
     @Override
     public List<Todo> findTodoByTags(List<Tag> tags) {
         return this.todoRepository.findTodoByTags(tags);
+    }
+
+    @Override
+    public Todo create(TodoAttributeData data, User user) {
+        Calendar calendar = data.getCalendarId() != null ?
+                calendarRepository.getCalendarById(data.getCalendarId()).get() : null;
+        Todo todo = new Todo(data.getUntilDate(), data.getContent(),
+                data.getTags(), user, calendar);
+        return todoRepository.save(todo);
     }
 
 //    @Override

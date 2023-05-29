@@ -30,4 +30,11 @@ public class CalendarRepositoryBridge implements CalendarRepository {
     public Calendar save(Calendar calendar) {
         return springDataCalendarRepository.save(calendar);
     }
+
+    @Override
+    public Optional<Calendar> getCalendarById(UUID calendarId) {
+        return springDataCalendarRepository.findCalendarById(calendarId);
+    }
+
+
 }

@@ -1,4 +1,4 @@
-package de.dhbw.ase.rest;
+package de.dhbw.ase.rest.todo;
 
 import de.dhbw.ase.adapter.todo.TodoResource;
 import de.dhbw.ase.adapter.todo.TodoToTodoResourceMapper;
@@ -6,10 +6,8 @@ import de.dhbw.ase.application.todo.TodoApplication;
 import de.dhbw.ase.application.user.UserApplication;
 import de.dhbw.ase.domain.Tag.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
@@ -47,5 +45,13 @@ public class TodoController {
     public List<TodoResource> getTodoByTags(@RequestParam(name = "tags") List<Tag> tags) {
         return this.todoApplication.findTodoByTags(tags).stream().map(todoToTodoResourceMapper)
                 .collect(Collectors.toList());
+    }
+
+    @PostMapping()
+    public ResponseEntity<TodoResource> create(@RequestBody TodoData data, Principal user) {
+        return ResponseEntity.ok(
+                todoToTodoResourceMapper.apply(
+                        todoApplication.create(data, userApplication.findUserByName(user.getName()).get())));
+
     }
 }

@@ -23,5 +23,7 @@ public interface TodoApplication {
     //TODO change to update todo
 //    void addTagToTodo(Tag tag, Todo todo);
 
+    Todo create(TodoAttributeData data, User user);
+
 
 }

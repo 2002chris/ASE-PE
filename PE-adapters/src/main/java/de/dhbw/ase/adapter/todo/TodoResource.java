@@ -1,21 +1,20 @@
 package de.dhbw.ase.adapter.todo;
 
 import de.dhbw.ase.domain.Tag.Tag;
+import de.dhbw.ase.domain.calendar.Calendar;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Getter
+@AllArgsConstructor
 public class TodoResource {
 
     private final LocalDate untilDate;
     private final String content;
     private final List<Tag> tags;
+    private final Calendar calendar;
 
-    public TodoResource(final LocalDate untilDate, final String content, final List<Tag> tags) {
-        this.untilDate = untilDate;
-        this.content = content;
-        this.tags = tags;
-    }
 }

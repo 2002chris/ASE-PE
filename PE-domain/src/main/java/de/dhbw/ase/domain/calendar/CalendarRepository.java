@@ -11,4 +11,6 @@ public interface CalendarRepository {
     Optional<Calendar> findCalendarById(UUID uuid);
 
     Calendar save(Calendar calendar);
+
+    Optional<Calendar> getCalendarById(UUID calendarId);
 }
