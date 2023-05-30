@@ -4,6 +4,7 @@ import de.dhbw.ase.domain.calendar.Calendar;
 import de.dhbw.ase.domain.calendar.CalendarRepository;
 import de.dhbw.ase.domain.reminder.Reminder;
 import de.dhbw.ase.domain.todo.Todo;
+import de.dhbw.ase.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,5 +49,17 @@ public class CalendarApplicationService implements CalendarApplication {
 //        List<Reminder> reminders = calendar.getReminder();
 //        reminders.add(reminder);
 //        calendar.setReminder(reminders);
+    }
+
+    @Override
+    public Calendar create(CalendarAttributeData data, User user) {
+        List<Calendar> userCalendars = this.calendarRepository.findCalendarsByUser(user);
+        for (Calendar calendar :
+                userCalendars) {
+            if (calendar.getName().equals(data.getName())){
+                return null;
+            }
+        }
+        return save(new Calendar(data.getName(), user));
     }
 }
