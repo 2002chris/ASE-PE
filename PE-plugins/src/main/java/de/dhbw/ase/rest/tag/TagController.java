@@ -1,12 +1,13 @@
-package de.dhbw.ase.rest;
+package de.dhbw.ase.rest.tag;
 
 import de.dhbw.ase.adapter.tag.TagResource;
 import de.dhbw.ase.adapter.tag.TagToTagResourceMapper;
 import de.dhbw.ase.application.tag.TagApplication;
+import de.dhbw.ase.application.tag.TagAttributeData;
+import de.dhbw.ase.domain.tag.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,5 +28,14 @@ public class TagController {
     @GetMapping
     public List<TagResource> getTags() {
         return tagApplication.findAllTags().stream().map(tagToTagResourceMapper).collect(Collectors.toList());
+    }
+
+    @PostMapping()
+    public ResponseEntity<TagResource> create(@RequestBody TagData data){
+        Tag tag = tagApplication.create(data);
+        return tag != null ?
+                ResponseEntity.ok(tagToTagResourceMapper.apply(tag)):
+                ResponseEntity.badRequest().build();
+
     }
 }

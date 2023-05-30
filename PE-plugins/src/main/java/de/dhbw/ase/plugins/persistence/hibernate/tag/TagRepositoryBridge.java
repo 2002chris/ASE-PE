@@ -29,4 +29,8 @@ public class TagRepositoryBridge implements TagRepository {
     public Tag save(Tag tag) {
         return springDataTagRepository.save(tag);
     }
+
+    public boolean existsById(String id){
+        return springDataTagRepository.existsById(id);
+    }
 }

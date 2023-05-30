@@ -10,4 +10,6 @@ public interface TagRepository {
     Optional<Tag> findTagByName(String name);
 
     Tag save(Tag tag);
+
+    boolean existsById(String id);
 }

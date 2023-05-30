@@ -32,4 +32,9 @@ public class TagApplicationService implements TagApplication {
     public Tag save(Tag tag) {
         return tagRepository.save(tag);
     }
+
+    @Override
+    public Tag create(TagAttributeData data) {
+        return !tagRepository.existsById(data.getName()) ? save(new Tag(data.getName())) : null;
+    }
 }

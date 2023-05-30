@@ -11,4 +11,6 @@ public interface TagApplication {
     Optional<Tag> findTagByName(String name);
 
     Tag save(Tag tag);
+
+    Tag create(TagAttributeData data);
 }
