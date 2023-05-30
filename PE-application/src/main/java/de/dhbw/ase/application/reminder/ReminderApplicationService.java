@@ -1,7 +1,10 @@
 package de.dhbw.ase.application.reminder;
 
+import de.dhbw.ase.domain.calendar.Calendar;
+import de.dhbw.ase.domain.calendar.CalendarRepository;
 import de.dhbw.ase.domain.reminder.Reminder;
 import de.dhbw.ase.domain.reminder.ReminderRepository;
+import de.dhbw.ase.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +16,12 @@ import java.util.UUID;
 public class ReminderApplicationService implements ReminderApplication {
 
     private final ReminderRepository reminderRepository;
+    private final CalendarRepository calendarRepository;
 
     @Autowired
-    public ReminderApplicationService(final ReminderRepository reminderRepository) {
+    public ReminderApplicationService(final ReminderRepository reminderRepository, CalendarRepository calendarRepository) {
         this.reminderRepository = reminderRepository;
+        this.calendarRepository = calendarRepository;
     }
 
 
@@ -33,5 +38,19 @@ public class ReminderApplicationService implements ReminderApplication {
     @Override
     public Reminder save(Reminder reminder) {
         return reminderRepository.save(reminder);
+    }
+
+    public Reminder create(ReminderAttributeData data, User user){
+        Optional<Calendar> temp = calendarRepository.getCalendarById(data.getCalendarId());
+        Calendar calendar = temp.orElse(null);
+        if(calendarRepository.findCalendarsByUser(user).contains(calendar)){
+            return save(new Reminder(
+                    data.getDate(),
+                    data.getTitle(),
+                    data.getDescription(),
+                    calendar
+            ));
+        }
+        return null;
     }
 }

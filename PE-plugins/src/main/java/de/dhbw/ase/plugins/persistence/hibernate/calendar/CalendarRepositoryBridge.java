@@ -2,6 +2,7 @@ package de.dhbw.ase.plugins.persistence.hibernate.calendar;
 
 import de.dhbw.ase.domain.calendar.Calendar;
 import de.dhbw.ase.domain.calendar.CalendarRepository;
+import de.dhbw.ase.domain.user.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -34,6 +35,11 @@ public class CalendarRepositoryBridge implements CalendarRepository {
     @Override
     public Optional<Calendar> getCalendarById(UUID calendarId) {
         return springDataCalendarRepository.findCalendarById(calendarId);
+    }
+
+    @Override
+    public List<Calendar> findCalendarsByUser(User user) {
+        return springDataCalendarRepository.findCalendarsByUser(user);
     }
 
 

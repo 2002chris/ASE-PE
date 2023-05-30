@@ -13,6 +13,7 @@ public class ReminderToReminderResourceMapper implements Function<Reminder, Remi
     }
 
     ReminderResource map(Reminder reminder) {
-        return new ReminderResource(reminder.getDate(), reminder.getTitle(), reminder.getDescription());
+        return new ReminderResource(reminder.getDate(), reminder.getTitle(),
+                reminder.getDescription(), reminder.getCalendar());
     }
 }
