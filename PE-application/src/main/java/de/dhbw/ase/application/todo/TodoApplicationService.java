@@ -52,6 +52,11 @@ public class TodoApplicationService implements TodoApplication {
         return todoRepository.save(todo);
     }
 
+    @Override
+    public List<Todo> findTodosByCalendar(Calendar calendar) {
+        return todoRepository.findTodosByCalendar(calendar);
+    }
+
 //    @Override
 //    public void addTagToTodo(Tag tag, Todo todo) {
 //        List<Tag> tags = todo.getTags();

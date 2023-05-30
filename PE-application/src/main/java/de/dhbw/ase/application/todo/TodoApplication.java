@@ -1,5 +1,6 @@
 package de.dhbw.ase.application.todo;
 
+import de.dhbw.ase.domain.calendar.Calendar;
 import de.dhbw.ase.domain.tag.Tag;
 import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.user.User;
@@ -25,5 +26,5 @@ public interface TodoApplication {
 
     Todo create(TodoAttributeData data, User user);
 
-
+    List<Todo> findTodosByCalendar(Calendar calendar);
 }

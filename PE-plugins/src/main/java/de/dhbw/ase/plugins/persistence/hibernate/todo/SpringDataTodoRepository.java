@@ -1,5 +1,6 @@
 package de.dhbw.ase.plugins.persistence.hibernate.todo;
 
+import de.dhbw.ase.domain.calendar.Calendar;
 import de.dhbw.ase.domain.tag.Tag;
 import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.user.User;
@@ -18,4 +19,6 @@ public interface SpringDataTodoRepository extends JpaRepository<Todo, UUID> {
     List<Todo> findByUser(User user);
 
     List<Todo> findByTagsIn(List<Tag> tags);
+
+    List<Todo> findTodosByCalendar(Calendar calendar);
 }
