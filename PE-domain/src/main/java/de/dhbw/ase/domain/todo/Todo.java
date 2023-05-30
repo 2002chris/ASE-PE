@@ -1,6 +1,6 @@
 package de.dhbw.ase.domain.todo;
 
-import de.dhbw.ase.domain.Tag.Tag;
+import de.dhbw.ase.domain.tag.Tag;
 import de.dhbw.ase.domain.calendar.Calendar;
 import de.dhbw.ase.domain.user.User;
 import lombok.Getter;

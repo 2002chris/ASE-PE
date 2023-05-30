@@ -1,4 +1,4 @@
-package de.dhbw.ase.domain.Tag;
+package de.dhbw.ase.domain.tag;
 
 import java.util.List;
 import java.util.Optional;

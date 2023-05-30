@@ -1,4 +1,4 @@
-package de.dhbw.ase.domain.Tag;
+package de.dhbw.ase.domain.tag;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

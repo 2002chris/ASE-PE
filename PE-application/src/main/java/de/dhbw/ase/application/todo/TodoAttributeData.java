@@ -1,6 +1,6 @@
 package de.dhbw.ase.application.todo;
 
-import de.dhbw.ase.domain.Tag.Tag;
+import de.dhbw.ase.domain.tag.Tag;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;

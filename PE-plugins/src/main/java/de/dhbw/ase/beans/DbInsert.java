@@ -5,14 +5,13 @@ import de.dhbw.ase.application.reminder.ReminderApplication;
 import de.dhbw.ase.application.tag.TagApplication;
 import de.dhbw.ase.application.todo.TodoApplication;
 import de.dhbw.ase.application.user.UserApplication;
-import de.dhbw.ase.domain.Tag.Tag;
+import de.dhbw.ase.domain.tag.Tag;
 import de.dhbw.ase.domain.calendar.Calendar;
 import de.dhbw.ase.domain.reminder.Reminder;
 import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.user.User;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.util.ArrayList;
 

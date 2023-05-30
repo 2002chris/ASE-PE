@@ -1,6 +1,6 @@
 package de.dhbw.ase.adapter.tag;
 
-import de.dhbw.ase.domain.Tag.Tag;
+import de.dhbw.ase.domain.tag.Tag;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;

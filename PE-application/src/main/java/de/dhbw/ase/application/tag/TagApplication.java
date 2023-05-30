@@ -1,6 +1,6 @@
 package de.dhbw.ase.application.tag;
 
-import de.dhbw.ase.domain.Tag.Tag;
+import de.dhbw.ase.domain.tag.Tag;
 
 import java.util.List;
 import java.util.Optional;

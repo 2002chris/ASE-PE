@@ -1,6 +1,6 @@
 package de.dhbw.ase.plugins.persistence.hibernate.tag;
 
-import de.dhbw.ase.domain.Tag.Tag;
+import de.dhbw.ase.domain.tag.Tag;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

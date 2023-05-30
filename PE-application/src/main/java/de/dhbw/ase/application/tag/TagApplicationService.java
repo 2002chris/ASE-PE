@@ -1,7 +1,7 @@
 package de.dhbw.ase.application.tag;
 
-import de.dhbw.ase.domain.Tag.Tag;
-import de.dhbw.ase.domain.Tag.TagRepository;
+import de.dhbw.ase.domain.tag.Tag;
+import de.dhbw.ase.domain.tag.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

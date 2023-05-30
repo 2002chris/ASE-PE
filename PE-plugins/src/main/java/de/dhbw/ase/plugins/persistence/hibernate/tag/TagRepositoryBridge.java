@@ -1,7 +1,7 @@
 package de.dhbw.ase.plugins.persistence.hibernate.tag;
 
-import de.dhbw.ase.domain.Tag.Tag;
-import de.dhbw.ase.domain.Tag.TagRepository;
+import de.dhbw.ase.domain.tag.Tag;
+import de.dhbw.ase.domain.tag.TagRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -4,7 +4,7 @@ import de.dhbw.ase.adapter.todo.TodoResource;
 import de.dhbw.ase.adapter.todo.TodoToTodoResourceMapper;
 import de.dhbw.ase.application.todo.TodoApplication;
 import de.dhbw.ase.application.user.UserApplication;
-import de.dhbw.ase.domain.Tag.Tag;
+import de.dhbw.ase.domain.tag.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
