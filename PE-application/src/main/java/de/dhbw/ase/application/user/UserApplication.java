@@ -24,4 +24,6 @@ public interface UserApplication {
     Optional<User> findUserByName(String name);
 
     User create(UserAttributeData data);
+
+    User update(UserAttributeData data, String name);
 }

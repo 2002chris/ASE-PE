@@ -6,6 +6,8 @@ import de.dhbw.ase.application.user.UserApplication;
 import de.dhbw.ase.domain.user.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,5 +42,11 @@ public class UserController {
             }
         }
         return ResponseEntity.badRequest().build();
+    }
+
+    @PutMapping()
+    public ResponseEntity<UserResource> update(@RequestBody UserData data, Principal user){
+        User temp = userApplication.update(data, user.getName());
+        return ResponseEntity.ok(userToUserResourceMapper.apply(temp));
     }
 }

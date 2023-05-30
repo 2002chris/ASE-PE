@@ -56,4 +56,16 @@ public class UserApplicationService implements UserApplication {
         User user = new User(data.getName(), data.getPassword());
         return userRepository.save(user);
     }
+
+    @Override
+    public User update(UserAttributeData data, String name) {
+        User updatedUser = findUserByName(name).get();
+        if(data.getName() != null){
+            updatedUser.setName(data.getName());
+        }
+        if (data.getPassword() != null){
+            updatedUser.setPassword(data.getPassword());
+        }
+        return save(updatedUser);
+    }
 }
