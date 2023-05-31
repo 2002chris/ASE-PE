@@ -91,6 +91,17 @@ public class TodoApplicationService implements TodoApplication {
         return todo;
     }
 
+    @Override
+    public boolean delete(UUID id) {
+        Todo todo = todoRepository.findTodoById(id).orElse(null);
+        if (todo != null){
+            todoRepository.delete(todo);
+            return true;
+        }
+
+        return false;
+    }
+
 
     @Override
     public Todo save(Todo todo) {

@@ -29,4 +29,6 @@ public interface TodoApplication {
     List<Todo> findTodosByCalendar(Calendar calendar);
 
     Todo update(TodoAttributeData data, UUID id);
+
+    boolean delete(UUID id);
 }

@@ -6,13 +6,11 @@ import de.dhbw.ase.domain.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -32,19 +30,17 @@ public class Todo {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "calendar_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Calendar calendar;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "todo_tags", joinColumns = @JoinColumn(name = "todo_id"), inverseJoinColumns = @JoinColumn(name = "tag_name"))
-    private List<Tag> tags;
+    private Set<Tag> tags;
 
-    public Todo(LocalDate until_date, String content, List<Tag> tags, User user, Calendar calendar) {
+    public Todo(LocalDate until_date, String content, Set<Tag> tags, User user, Calendar calendar) {
         this.id = UUID.randomUUID();
         this.untilDate = until_date;
         this.content = content;

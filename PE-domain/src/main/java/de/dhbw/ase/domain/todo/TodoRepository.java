@@ -21,4 +21,6 @@ public interface TodoRepository {
     List<Todo> findTodoByUser(User user);
 
     List<Todo> findTodosByCalendar(Calendar calendar);
+
+    void delete(Todo todo);
 }

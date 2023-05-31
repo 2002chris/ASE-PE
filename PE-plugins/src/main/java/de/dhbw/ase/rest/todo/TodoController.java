@@ -64,4 +64,12 @@ public class TodoController {
         return todo != null ? ResponseEntity.ok(todoToTodoResourceMapper.apply(todo)) :
                 ResponseEntity.badRequest().build();
     }
+
+    @DeleteMapping(params = {"id"})
+    public ResponseEntity<Void> delete(@RequestParam String id){
+        return todoApplication.delete(UUID.fromString(id)) ?
+                ResponseEntity.ok().build() :
+                ResponseEntity.badRequest().build();
+
+    }
 }

@@ -44,6 +44,11 @@ public class TodoRepositoryBridge implements TodoRepository {
         return springDataTodoRepository.findTodosByCalendar(calendar);
     }
 
+    @Override
+    public void delete(Todo todo) {
+        springDataTodoRepository.delete(todo);
+    }
+
     public List<Todo> findTodoByTags(List<Tag> tags) {
         return springDataTodoRepository.findByTagsIn(tags);
     }

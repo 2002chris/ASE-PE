@@ -7,6 +7,7 @@ import lombok.Getter;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @AllArgsConstructor
@@ -14,7 +15,7 @@ public class TodoResource {
 
     private final LocalDate untilDate;
     private final String content;
-    private final List<Tag> tags;
+    private final Set<Tag> tags;
     private final Calendar calendar;
 
 }

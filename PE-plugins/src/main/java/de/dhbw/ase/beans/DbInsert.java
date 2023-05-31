@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 @Component
 public class DbInsert {
@@ -40,11 +41,11 @@ public class DbInsert {
             User user = new User("user" + i, "test");
             Calendar calendar = new Calendar("calendar" + i, user);
 
-            Todo calendarTodo = new Todo(LocalDate.now(), "calendarTodo" + i, new ArrayList<>() {
+            Todo calendarTodo = new Todo(LocalDate.now(), "calendarTodo" + i, new HashSet<>() {
                 {
                     this.add(tag);
                 }}, null, calendar);
-            Todo userTodo = new Todo(LocalDate.now(), "userTodo" + i, new ArrayList<>() {{
+            Todo userTodo = new Todo(LocalDate.now(), "userTodo" + i, new HashSet<>() {{
                 this.add(tag2);
                 this.add(tag);
             }}, user, null);

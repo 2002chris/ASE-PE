@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -17,7 +17,7 @@ import java.util.UUID;
 public abstract class TodoAttributeData {
     private LocalDate untilDate;
     private String content;
-    private List<Tag> tags;
+    private Set<Tag> tags;
     private UUID calendarId;
 
 //    public TodoAttributeData(String s_untilDate, String content, List<Tag> tags, UUID calendarId) {
