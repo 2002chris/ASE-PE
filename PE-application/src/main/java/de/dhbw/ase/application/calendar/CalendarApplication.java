@@ -16,10 +16,7 @@ public interface CalendarApplication {
 
     Calendar save(Calendar calendar);
 
-    //TODO evaluiere umsetzung von diesen use cases
-    void addTodoToCalendar(Todo todo, Calendar calendar);
-
-    void addReminderToCalendar(Reminder reminder, Calendar calendar);
-
     Calendar create(CalendarAttributeData data, User user);
+
+    Calendar update(CalendarAttributeData data, UUID id);
 }

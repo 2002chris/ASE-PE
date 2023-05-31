@@ -72,4 +72,13 @@ public class CalendarController {
                 ResponseEntity.badRequest().build();
 
     }
+
+    @PutMapping(params = {"id"})
+    public ResponseEntity<CalendarResource> update(@RequestBody CalendarData data,
+                                                   @RequestParam String id){
+        Calendar calendar = calendarApplication.update(data, UUID.fromString(id));
+        return calendar != null ?
+                ResponseEntity.ok(calendarToCalendarResourceMapper.apply(calendar)) :
+                ResponseEntity.badRequest().build();
+    }
 }

@@ -38,20 +38,6 @@ public class CalendarApplicationService implements CalendarApplication {
     }
 
     @Override
-    public void addTodoToCalendar(Todo todo, Calendar calendar) {
-//       List<Todo> todos = calendar.getTodos();
-//       todos.add(todo);
-//       calendar.setTodos(todos);
-    }
-
-    @Override
-    public void addReminderToCalendar(Reminder reminder, Calendar calendar) {
-//        List<Reminder> reminders = calendar.getReminder();
-//        reminders.add(reminder);
-//        calendar.setReminder(reminders);
-    }
-
-    @Override
     public Calendar create(CalendarAttributeData data, User user) {
         List<Calendar> userCalendars = this.calendarRepository.findCalendarsByUser(user);
         for (Calendar calendar :
@@ -62,4 +48,16 @@ public class CalendarApplicationService implements CalendarApplication {
         }
         return save(new Calendar(data.getName(), user));
     }
+
+    @Override
+    public Calendar update(CalendarAttributeData data, UUID id) {
+        Calendar calendar = calendarRepository.findCalendarById(id).orElse(null);
+        if(calendar != null && data.getName() != null){
+            calendar.setName(data.getName());
+            calendarRepository.save(calendar);
+        }
+        return calendar;
+    }
+
+
 }
