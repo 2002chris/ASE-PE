@@ -12,4 +12,6 @@ public interface TagRepository {
     Tag save(Tag tag);
 
     boolean existsById(String id);
+
+    void delete(Tag tag);
 }

@@ -4,6 +4,7 @@ import de.dhbw.ase.domain.tag.Tag;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface TagApplication {
     List<Tag> findAllTags();
@@ -13,4 +14,6 @@ public interface TagApplication {
     Tag save(Tag tag);
 
     Tag create(TagAttributeData data);
+
+    boolean delete(String name);
 }

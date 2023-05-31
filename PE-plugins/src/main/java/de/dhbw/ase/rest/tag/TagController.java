@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -37,5 +38,12 @@ public class TagController {
                 ResponseEntity.ok(tagToTagResourceMapper.apply(tag)):
                 ResponseEntity.badRequest().build();
 
+    }
+
+    @DeleteMapping(params = {"name"})
+    public ResponseEntity<Void> delete(@RequestParam String name){
+        return tagApplication.delete(name)?
+                ResponseEntity.ok().build():
+                ResponseEntity.badRequest().build();
     }
 }

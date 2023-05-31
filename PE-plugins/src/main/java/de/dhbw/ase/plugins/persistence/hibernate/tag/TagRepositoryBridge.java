@@ -33,4 +33,8 @@ public class TagRepositoryBridge implements TagRepository {
     public boolean existsById(String id){
         return springDataTagRepository.existsById(id);
     }
+
+    public void delete(Tag tag){
+        springDataTagRepository.delete(tag);
+    }
 }

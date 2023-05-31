@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class TagApplicationService implements TagApplication {
@@ -36,5 +37,15 @@ public class TagApplicationService implements TagApplication {
     @Override
     public Tag create(TagAttributeData data) {
         return !tagRepository.existsById(data.getName()) ? save(new Tag(data.getName())) : null;
+    }
+
+    @Override
+    public boolean delete(String name) {
+        Tag tag = tagRepository.findTagByName(name).orElse(null);
+        if (tag != null) {
+            tagRepository.delete(tag);
+            return true;
+        }
+        return false;
     }
 }
