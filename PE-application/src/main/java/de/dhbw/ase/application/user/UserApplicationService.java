@@ -2,6 +2,7 @@ package de.dhbw.ase.application.user;
 
 import de.dhbw.ase.domain.calendar.Calendar;
 import de.dhbw.ase.domain.todo.Todo;
+import de.dhbw.ase.domain.todo.TodoRepository;
 import de.dhbw.ase.domain.user.User;
 import de.dhbw.ase.domain.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,13 @@ import java.util.UUID;
 public class UserApplicationService implements UserApplication {
 
     private final UserRepository userRepository;
+    private final TodoRepository todoRepository;
 
     @Autowired
-    public UserApplicationService(final UserRepository userRepository) {
+    public UserApplicationService(final UserRepository userRepository,
+                                  final TodoRepository todoRepository) {
         this.userRepository = userRepository;
+        this.todoRepository = todoRepository;
     }
 
     @Override
@@ -67,5 +71,20 @@ public class UserApplicationService implements UserApplication {
             updatedUser.setPassword(data.getPassword());
         }
         return save(updatedUser);
+    }
+
+    @Override
+    public boolean delete(UUID id) {
+        User user = userRepository.findUserById(id).orElse(null);
+        if (user != null){
+            for (Todo todo :
+                    todoRepository.findTodoByUser(user)) {
+                todoRepository.delete(todo);
+            }
+            userRepository.delete(user);
+            return true;
+        }
+
+        return false;
     }
 }

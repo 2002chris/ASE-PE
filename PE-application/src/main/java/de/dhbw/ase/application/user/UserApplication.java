@@ -26,4 +26,6 @@ public interface UserApplication {
     User create(UserAttributeData data);
 
     User update(UserAttributeData data, String name);
+
+    boolean delete(UUID id);
 }

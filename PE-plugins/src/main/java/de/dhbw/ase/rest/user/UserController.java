@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -48,5 +49,12 @@ public class UserController {
     public ResponseEntity<UserResource> update(@RequestBody UserData data, Principal user){
         User temp = userApplication.update(data, user.getName());
         return ResponseEntity.ok(userToUserResourceMapper.apply(temp));
+    }
+
+    @DeleteMapping(params = {"id"})
+    public ResponseEntity<Void> delete(@RequestParam String id){
+        return userApplication.delete(UUID.fromString(id)) ?
+                ResponseEntity.ok().build() :
+                ResponseEntity.badRequest().build();
     }
 }

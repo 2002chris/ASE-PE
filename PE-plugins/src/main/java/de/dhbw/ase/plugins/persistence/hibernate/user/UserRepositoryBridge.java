@@ -35,4 +35,9 @@ public class UserRepositoryBridge implements UserRepository {
     public User save(User user) {
         return springDataUserRepository.save(user);
     }
+
+    @Override
+    public void delete(User user) {
+        springDataUserRepository.delete(user);
+    }
 }
