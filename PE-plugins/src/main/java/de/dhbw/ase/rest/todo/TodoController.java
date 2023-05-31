@@ -58,11 +58,9 @@ public class TodoController {
 
     @PutMapping(params = {"id"})
     public ResponseEntity<TodoResource> update(@RequestBody TodoData data,
-                                               @RequestParam String id,
-                                               Principal user){
+                                               @RequestParam String id){
         Todo todo =  todoApplication.update(data,
-                UUID.fromString(id),
-                userApplication.findUserByName(user.getName()).get());
+                UUID.fromString(id));
         return todo != null ? ResponseEntity.ok(todoToTodoResourceMapper.apply(todo)) :
                 ResponseEntity.badRequest().build();
     }

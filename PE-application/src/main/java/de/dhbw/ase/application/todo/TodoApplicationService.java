@@ -66,7 +66,7 @@ public class TodoApplicationService implements TodoApplication {
     }
 
     @Override
-    public Todo update(TodoAttributeData data, UUID id, User user) {
+    public Todo update(TodoAttributeData data, UUID id) {
         Todo todo = todoRepository.findTodoById(id).orElse(null);
         List<Tag> allTags = tagRepository.findAllTags();
         for (Tag tag:
