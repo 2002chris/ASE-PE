@@ -86,6 +86,7 @@ public class TodoApplicationService implements TodoApplication {
             if(data.getTags() != null){
                 todo.setTags(data.getTags());
             }
+            todoRepository.save(todo);
         }
         return todo;
     }
