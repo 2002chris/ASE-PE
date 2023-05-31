@@ -5,6 +5,7 @@ import de.dhbw.ase.adapter.todo.TodoToTodoResourceMapper;
 import de.dhbw.ase.application.todo.TodoApplication;
 import de.dhbw.ase.application.user.UserApplication;
 import de.dhbw.ase.domain.tag.Tag;
+import de.dhbw.ase.domain.todo.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,5 +54,16 @@ public class TodoController {
                 todoToTodoResourceMapper.apply(
                         todoApplication.create(data, userApplication.findUserByName(user.getName()).get())));
 
+    }
+
+    @PutMapping(params = {"id"})
+    public ResponseEntity<TodoResource> update(@RequestBody TodoData data,
+                                               @RequestParam String id,
+                                               Principal user){
+        Todo todo =  todoApplication.update(data,
+                UUID.fromString(id),
+                userApplication.findUserByName(user.getName()).get());
+        return todo != null ? ResponseEntity.ok(todoToTodoResourceMapper.apply(todo)) :
+                ResponseEntity.badRequest().build();
     }
 }

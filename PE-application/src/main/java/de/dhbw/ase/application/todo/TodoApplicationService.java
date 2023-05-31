@@ -3,6 +3,7 @@ package de.dhbw.ase.application.todo;
 import de.dhbw.ase.domain.tag.Tag;
 import de.dhbw.ase.domain.calendar.Calendar;
 import de.dhbw.ase.domain.calendar.CalendarRepository;
+import de.dhbw.ase.domain.tag.TagRepository;
 import de.dhbw.ase.domain.todo.Todo;
 import de.dhbw.ase.domain.todo.TodoRepository;
 import de.dhbw.ase.domain.user.User;
@@ -17,11 +18,15 @@ import java.util.UUID;
 public class TodoApplicationService implements TodoApplication {
     private final TodoRepository todoRepository;
     private final CalendarRepository calendarRepository;
+    private final TagRepository tagRepository;
 
     @Autowired
-    public TodoApplicationService(TodoRepository todoRepository, CalendarRepository calendarRepository) {
+    public TodoApplicationService(TodoRepository todoRepository,
+                                  CalendarRepository calendarRepository,
+                                  TagRepository tagRepository) {
         this.todoRepository = todoRepository;
         this.calendarRepository = calendarRepository;
+        this.tagRepository = tagRepository;
     }
 
     public List<Todo> findAllTodos() {
@@ -57,12 +62,30 @@ public class TodoApplicationService implements TodoApplication {
         return todoRepository.findTodosByCalendar(calendar);
     }
 
-//    @Override
-//    public void addTagToTodo(Tag tag, Todo todo) {
-//        List<Tag> tags = todo.getTags();
-//        tags.add(tag);
-//        todo.setTags(tags);
-//    }
+    @Override
+    public Todo update(TodoAttributeData data, UUID id, User user) {
+        Todo todo = todoRepository.findTodoById(id).orElse(null);
+        List<Tag> allTags = tagRepository.findAllTags();
+        for (Tag tag:
+                data.getTags()) {
+            if(!allTags.contains(tag)){
+                tagRepository.save(tag);
+            }
+        }
+        if(todo != null){
+             if(data.getUntilDate() != null){
+                todo.setUntilDate(data.getUntilDate());
+            }
+             if(data.getContent() != null){
+                 todo.setContent(data.getContent());
+             }
+
+            if(data.getTags() != null){
+                todo.setTags(data.getTags());
+            }
+        }
+        return todo;
+    }
 
 
     @Override
