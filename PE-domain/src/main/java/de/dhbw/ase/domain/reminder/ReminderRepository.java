@@ -11,4 +11,6 @@ public interface ReminderRepository {
     Optional<Reminder> findReminderById(UUID uuid);
 
     Reminder save(Reminder reminder);
+
+    void delete(Reminder reminder);
 }

@@ -51,4 +51,11 @@ public class ReminderController {
                 ResponseEntity.ok(reminderToReminderResourceMapper.apply(reminder)) :
                 ResponseEntity.badRequest().build();
     }
+
+    @DeleteMapping(params = {"id"})
+    public ResponseEntity<Void> delete(@RequestParam String id){
+        return reminderApplication.delete(UUID.fromString(id)) ?
+                ResponseEntity.ok().build() :
+                ResponseEntity.badRequest().build();
+    }
 }

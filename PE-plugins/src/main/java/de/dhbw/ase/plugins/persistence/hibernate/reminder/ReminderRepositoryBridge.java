@@ -31,4 +31,9 @@ public class ReminderRepositoryBridge implements ReminderRepository {
     public Reminder save(Reminder reminder) {
         return springDataReminderRepository.save(reminder);
     }
+
+    @Override
+    public void delete(Reminder reminder) {
+        springDataReminderRepository.delete(reminder);
+    }
 }

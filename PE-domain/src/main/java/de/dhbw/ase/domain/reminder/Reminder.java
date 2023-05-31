@@ -34,7 +34,6 @@ public class Reminder {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "calendar_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Calendar calendar;
 
     public Reminder(LocalDate date, String title, String description, Calendar calendar) {

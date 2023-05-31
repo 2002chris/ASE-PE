@@ -17,4 +17,6 @@ public interface ReminderApplication {
     Reminder create(ReminderAttributeData data, User user);
 
     Reminder update(ReminderAttributeData data, UUID id);
+
+    boolean delete(UUID id);
 }

@@ -72,4 +72,14 @@ public class ReminderApplicationService implements ReminderApplication {
 
         return reminder;
     }
+
+    @Override
+    public boolean delete(UUID id) {
+        Reminder reminder = reminderRepository.findReminderById(id).orElse(null);
+        if(reminder != null){
+            reminderRepository.delete(reminder);
+            return true;
+        }
+        return false;
+    }
 }
