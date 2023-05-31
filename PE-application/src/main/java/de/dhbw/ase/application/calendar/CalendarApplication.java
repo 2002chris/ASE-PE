@@ -19,4 +19,6 @@ public interface CalendarApplication {
     Calendar create(CalendarAttributeData data, User user);
 
     Calendar update(CalendarAttributeData data, UUID id);
+
+    boolean delete(UUID id);
 }

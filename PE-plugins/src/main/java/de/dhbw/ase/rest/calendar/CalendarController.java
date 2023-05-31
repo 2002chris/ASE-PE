@@ -81,4 +81,12 @@ public class CalendarController {
                 ResponseEntity.ok(calendarToCalendarResourceMapper.apply(calendar)) :
                 ResponseEntity.badRequest().build();
     }
+
+    @DeleteMapping(params = {"id"})
+
+    public ResponseEntity<Void> delete(@RequestParam String id){
+        return calendarApplication.delete(UUID.fromString(id)) ?
+                ResponseEntity.ok().build() :
+                ResponseEntity.badRequest().build();
+    }
 }

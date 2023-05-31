@@ -18,4 +18,6 @@ public interface CalendarRepository {
     Optional<Calendar> getCalendarById(UUID calendarId);
 
     List<Calendar> findCalendarsByUser(User user);
+
+    void delete(Calendar calendar);
 }

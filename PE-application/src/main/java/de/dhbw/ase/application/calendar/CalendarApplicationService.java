@@ -59,5 +59,13 @@ public class CalendarApplicationService implements CalendarApplication {
         return calendar;
     }
 
-
+    @Override
+    public boolean delete(UUID id) {
+        Calendar calendar = calendarRepository.findCalendarById(id).orElse(null);
+        if (calendar != null){
+            calendarRepository.delete(calendar);
+            return true;
+        }
+        return false;
+    }
 }

@@ -42,5 +42,10 @@ public class CalendarRepositoryBridge implements CalendarRepository {
         return springDataCalendarRepository.findCalendarsByUser(user);
     }
 
+    @Override
+    public void delete(Calendar calendar) {
+        springDataCalendarRepository.delete(calendar);
+    }
+
 
 }
