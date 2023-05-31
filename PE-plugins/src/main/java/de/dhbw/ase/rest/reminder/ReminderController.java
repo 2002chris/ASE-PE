@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -37,6 +38,15 @@ public class ReminderController {
     @PostMapping
     public ResponseEntity<ReminderResource> create(@RequestBody ReminderData data, Principal user){
         Reminder reminder = reminderApplication.create(data, userApplication.findUserByName(user.getName()).get());
+        return reminder != null ?
+                ResponseEntity.ok(reminderToReminderResourceMapper.apply(reminder)) :
+                ResponseEntity.badRequest().build();
+    }
+
+    @PutMapping(params = {"id"})
+    public ResponseEntity<ReminderResource> update(@RequestBody ReminderData data,
+                                                   @RequestParam String id){
+        Reminder reminder = reminderApplication.update(data, UUID.fromString(id));
         return reminder != null ?
                 ResponseEntity.ok(reminderToReminderResourceMapper.apply(reminder)) :
                 ResponseEntity.badRequest().build();

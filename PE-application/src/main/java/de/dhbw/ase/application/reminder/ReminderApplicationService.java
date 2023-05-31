@@ -53,4 +53,23 @@ public class ReminderApplicationService implements ReminderApplication {
         }
         return null;
     }
+
+    @Override
+    public Reminder update(ReminderAttributeData data, UUID id) {
+        Reminder reminder = reminderRepository.findReminderById(id).orElse(null);
+        if (reminder != null) {
+            if (data.getDate() != null)
+                reminder.setDate(data.getDate());
+            if (data.getCalendarId() != null)
+                reminder.setCalendar(calendarRepository.findCalendarById(id).
+                        orElse(reminder.getCalendar()));
+            if (data.getDescription() != null)
+                reminder.setDescription(data.getDescription());
+            if (data.getTitle() != null)
+                reminder.setTitle(data.getTitle());
+            reminderRepository.save(reminder);
+        }
+
+        return reminder;
+    }
 }
