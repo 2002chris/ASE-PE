@@ -51,9 +51,12 @@ public class TodoApplicationService implements TodoApplication {
     @Override
     public Todo create(TodoAttributeData data, User user) {
         Calendar calendar = data.getCalendarId() != null ?
-                calendarRepository.getCalendarById(data.getCalendarId()).get() : null;
-        Todo todo = new Todo(data.getUntilDate(), data.getContent(),
-                data.getTags(), user, calendar);
+                calendarRepository.getCalendarById(data.getCalendarId()).orElse(null) : null;
+        Todo todo = calendar != null ?
+                new Todo(data.getUntilDate(), data.getContent(),
+                data.getTags(), null, calendar) :
+                 new Todo(data.getUntilDate(), data.getContent(),
+                         data.getTags(), user, null);
         return todoRepository.save(todo);
     }
 
